@@ -1,0 +1,42 @@
+﻿@import "tailwindcss";
+@import "../styles/tailwind-tokens.css";
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body), "Helvetica Neue", sans-serif;
+    background: linear-gradient(180deg, #f8fafc 0%, #f2f7ff 55%, #f8fafc 100%);
+    color: var(--td-ink);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), "Impact", sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(15, 33, 60, 0.08) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(15, 33, 60, 0.08) 1px, transparent 1px);
+    background-size: 120px 120px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
