@@ -7,9 +7,9 @@ export default function About() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-20">
         <div className="space-y-8">
           <SectionTitle
-            eyebrow="Built for precision"
-            title="Reliability is non-negotiable."
-            description="We do not just write code; we architect business stability. Every line is strategic, every decision is data-backed."
+            eyebrow="Construido para la precisión"
+            title="La confiabilidad es innegociable."
+            description="No solo escribimos código; arquitectamos estabilidad de negocio. Cada línea es estratégica, cada decisión se respalda con datos."
             tone="light"
           />
           <div className="grid gap-4 sm:grid-cols-2">
@@ -24,18 +24,18 @@ export default function About() {
         <div className="grid gap-4">
           <div className="h-48 rounded-[var(--radius-card)] bg-gradient-to-br from-brand to-ink-2 p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
-              Architecture Snapshot
+              Panorama de arquitectura
             </p>
             <p className="mt-6 text-xl font-semibold text-white">
-              98.9% uptime across enterprise workloads.
+              98.9% de disponibilidad en cargas empresariales.
             </p>
           </div>
           <div className="h-48 rounded-[var(--radius-card)] bg-white p-6 text-ink">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
-              Client Workflows
+              Flujos de clientes
             </p>
             <p className="mt-6 text-xl font-semibold">
-              Cross-functional teams aligned with shared roadmaps.
+              Equipos multifuncionales alineados con hojas de ruta compartidas.
             </p>
           </div>
         </div>

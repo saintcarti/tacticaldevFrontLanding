@@ -20,7 +20,7 @@ export default function Navbar() {
           ))}
         </nav>
         <Button href="#contact" size="sm">
-          Schedule a Consultation
+          Agenda una consulta
         </Button>
       </div>
     </header>

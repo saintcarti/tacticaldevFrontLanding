@@ -7,9 +7,9 @@ export default function Services() {
     <section id="services" className="bg-sand">
       <div className="mx-auto max-w-6xl space-y-10 px-6 py-16 md:py-20">
         <SectionTitle
-          eyebrow="Expertise"
-          title="Core Service Pillars"
-          description="Precision-focused execution across the most critical layers of your platform."
+          eyebrow="Especialidades"
+          title="Pilares clave del servicio"
+          description="Ejecución precisa en las capas más críticas de tu plataforma."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {servicePillars.map((pillar) => (

@@ -15,8 +15,8 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm text-white/70">
-            The partner of choice for high-stakes enterprise software engineering
-            and strategic cloud architecture.
+            El socio elegido para ingeniería de software empresarial de alto
+            riesgo y arquitectura de nube estratégica.
           </p>
           <div className="flex gap-3 text-xs text-white/60">
             <Link href="#">LinkedIn</Link>
@@ -36,7 +36,7 @@ export default function Footer() {
         ))}
       </div>
       <div className="border-t border-white/10 px-6 py-6 text-center text-xs text-white/50">
-        © 2024 TacticalDev Engineering Group. All rights reserved.
+        © 2024 TacticalDev Engineering Group. Todos los derechos reservados.
       </div>
     </footer>
   );
