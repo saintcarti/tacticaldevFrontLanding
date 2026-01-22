@@ -1,116 +1,116 @@
 ﻿export const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Methodology", href: "#methodology" },
-  { label: "About", href: "#about" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Contact", href: "#contact" },
+  { label: "Servicios", href: "#services" },
+  { label: "Metodología", href: "#methodology" },
+  { label: "Acerca de", href: "#about" },
+  { label: "Por qué nosotros", href: "#why-us" },
+  { label: "Contacto", href: "#contact" },
 ];
 
 export const servicePillars = [
   {
-    title: "Custom Software",
+    title: "Software a medida",
     description:
-      "Tailored enterprise software designed to solve specific operational bottlenecks.",
-    tag: "Product Build",
+      "Software empresarial diseñado para resolver cuellos de botella operativos.",
+    tag: "Construcción de producto",
   },
   {
-    title: "Architecture",
+    title: "Arquitectura",
     description:
-      "Blueprint-level planning for complex ecosystems ensuring long-term stability.",
-    tag: "Systems Design",
+      "Planificación a nivel blueprint para ecosistemas complejos y estabilidad a largo plazo.",
+    tag: "Diseño de sistemas",
   },
   {
-    title: "Backend Systems",
+    title: "Sistemas backend",
     description:
-      "High-performance services with security and scale baked in.",
-    tag: "Engineering",
+      "Servicios de alto rendimiento con seguridad y escalabilidad integradas.",
+    tag: "Ingeniería",
   },
   {
-    title: "Cloud Strategy",
+    title: "Estrategia cloud",
     description:
-      "Seamless migration and modernization across AWS, Azure, or GCP.",
-    tag: "Infrastructure",
+      "Migración y modernización sin fricciones en AWS, Azure o GCP.",
+    tag: "Infraestructura",
   },
 ];
 
 export const methodologySteps = [
   {
     step: "01",
-    title: "Discovery",
-    description: "Requirements analysis and stakeholder alignment.",
+    title: "Descubrimiento",
+    description: "Análisis de requisitos y alineación con stakeholders.",
   },
   {
     step: "02",
-    title: "Architecture",
-    description: "System blueprinting with risk mapping and guardrails.",
+    title: "Arquitectura",
+    description: "Diseño del sistema con riesgos y guardrails definidos.",
   },
   {
     step: "03",
-    title: "Engineering",
-    description: "Agile sprints with weekly milestones and QA gates.",
+    title: "Ingeniería",
+    description: "Sprints ágiles con hitos semanales y controles de QA.",
   },
   {
     step: "04",
-    title: "QA Testing",
-    description: "Performance validation, security checks, and UAT.",
+    title: "Pruebas QA",
+    description: "Validación de rendimiento, seguridad y UAT.",
   },
   {
     step: "05",
-    title: "Deployment",
-    description: "Scale-out delivery with monitoring and handoff.",
+    title: "Despliegue",
+    description: "Entrega con monitoreo, escalado y handoff.",
   },
 ];
 
 export const trustSignals = [
   {
-    title: "Security-First",
-    description: "SOC2-compliant processes and hardened architectures.",
+    title: "Seguridad primero",
+    description: "Procesos con cumplimiento SOC2 y arquitecturas reforzadas.",
   },
   {
-    title: "Precision Execution",
-    description: "Zero-defect engineering with clear accountability.",
+    title: "Ejecución precisa",
+    description: "Ingeniería sin defectos con responsabilidad clara.",
   },
   {
-    title: "Scalability",
-    description: "Built for future growth and peak demand readiness.",
+    title: "Escalabilidad",
+    description: "Listo para crecer y soportar picos de demanda.",
   },
   {
-    title: "Enterprise Focus",
-    description: "Aligned with ROI goals and executive reporting.",
+    title: "Enfoque empresarial",
+    description: "Alineado con objetivos de ROI y reportes ejecutivos.",
   },
 ];
 
 export const whyUs = [
   {
-    title: "Senior-Only Teams",
-    description: "Every engagement is led by principal engineers.",
+    title: "Equipos senior",
+    description: "Cada proyecto es liderado por ingenieros principales.",
   },
   {
-    title: "Mission-Critical Delivery",
-    description: "We specialize in systems where downtime is not an option.",
+    title: "Entrega crítica",
+    description: "Especialistas en sistemas donde la caída no es opción.",
   },
   {
-    title: "Transparent Roadmaps",
-    description: "Weekly progress dashboards and shared documentation.",
+    title: "Hojas de ruta claras",
+    description: "Tableros semanales y documentación compartida.",
   },
 ];
 
 export const footerColumns = [
   {
-    title: "Services",
+    title: "Servicios",
     links: [
-      "Enterprise Software",
-      "Cloud Architecture",
-      "Data Engineering",
-      "Legacy Migration",
+      "Software empresarial",
+      "Arquitectura en la nube",
+      "Ingeniería de datos",
+      "Migración de legado",
     ],
   },
   {
-    title: "Company",
-    links: ["Methodology", "Case Studies", "Careers", "Contact"],
+    title: "Empresa",
+    links: ["Metodología", "Casos de estudio", "Carreras", "Contacto"],
   },
   {
-    title: "Location",
+    title: "Ubicación",
     links: [
       "1200 Innovation Drive",
       "Suite 500",

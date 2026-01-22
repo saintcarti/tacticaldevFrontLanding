@@ -15,9 +15,9 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "TacticalDev | Strategic Software Development",
+  title: "TacticalDev | Desarrollo de software estratégico",
   description:
-    "Enterprise-grade software development and architecture for mission-critical teams.",
+    "Desarrollo y arquitectura de software de nivel empresarial para equipos de misión crítica.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${displayFont.variable} ${bodyFont.variable} min-h-screen bg-sand text-ink antialiased`}
       >
