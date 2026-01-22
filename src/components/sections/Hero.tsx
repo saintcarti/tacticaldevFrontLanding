@@ -5,28 +5,36 @@ import networkBg from "@/assets/images/network-bg.jpg";
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
+      <div
+        className="bg-orb pointer-events-none absolute -left-16 top-10 h-48 w-48 opacity-70 md:h-64 md:w-64"
+        aria-hidden="true"
+      />
+      <div
+        className="bg-orb pointer-events-none absolute right-0 top-1/2 h-56 w-56 opacity-60 md:h-72 md:w-72"
+        aria-hidden="true"
+      />
       <div className="absolute inset-0 bg-grid opacity-30" />
       <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-mist px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+          <div className="hero-reveal hero-reveal--1 inline-flex items-center gap-2 rounded-full bg-mist px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
             Ahora aceptamos socios empresariales
           </div>
-          <h1 className="text-4xl font-semibold text-ink md:text-5xl">
+          <h1 className="hero-reveal hero-reveal--2 text-4xl font-semibold text-ink md:text-5xl">
             Software estratégico
             <span className="block text-brand">Desarrollo</span> y arquitectura
           </h1>
-          <p className="text-base text-ink-3 md:text-lg">
+          <p className="hero-reveal hero-reveal--3 text-base text-ink-3 md:text-lg">
             Creamos soluciones empresariales con precisión táctica y excelencia
             arquitectónica. Conectamos lógica de negocio compleja con ejecución
             técnica confiable.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="hero-reveal hero-reveal--4 flex flex-wrap gap-3">
             <Button href="#contact">Iniciar proyecto</Button>
             <Button href="#services" variant="secondary">
               Ver casos de estudio
             </Button>
           </div>
-          <div className="flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-ink-3">
+          <div className="hero-reveal hero-reveal--5 flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-ink-3">
             <span>Entrega con enfoque en seguridad</span>
             <span>Sprints ágiles</span>
             <span>Arquitectura primero</span>
