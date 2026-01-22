@@ -17,6 +17,7 @@ export default function SectionTitle({
     align === "center" ? "text-center items-center" : "text-left items-start";
   const titleClass = tone === "light" ? "text-white" : "text-ink";
   const descriptionClass = tone === "light" ? "text-white/70" : "text-ink-3";
+  const descriptionAlignmentClass = align === "center" ? "mx-auto" : "";
   const eyebrowClass = tone === "light" ? "text-white/60" : "text-brand";
 
   return (
@@ -32,7 +33,11 @@ export default function SectionTitle({
         {title}
       </h2>
       {description ? (
-        <p className={`max-w-2xl text-base ${descriptionClass}`}>{description}</p>
+        <p
+          className={`max-w-2xl text-base ${descriptionClass} ${descriptionAlignmentClass}`}
+        >
+          {description}
+        </p>
       ) : null}
     </div>
   );
