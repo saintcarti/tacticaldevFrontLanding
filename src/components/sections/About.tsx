@@ -4,9 +4,9 @@ import { trustSignals } from "@/lib/constants";
 
 export default function About() {
   return (
-    <section id="about" className="bg-ink text-white">
+    <section id="about" className="bg-ink text-white min-h-screen flex items-center">
       <Reveal className="mobile-reveal mobile-delay-3">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-0 md:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-8">
             <SectionTitle
               eyebrow="Construido para la precisión"

@@ -5,9 +5,9 @@ import { whyUs } from "@/lib/constants";
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="bg-sand">
+    <section id="why-us" className="bg-sand min-h-screen flex items-center">
       <Reveal className="mobile-reveal mobile-delay-4">
-        <div className="mx-auto max-w-6xl space-y-10 px-6 py-16 md:py-20">
+        <div className="mx-auto w-full max-w-6xl space-y-10 px-6 py-0">
           <SectionTitle
             eyebrow="Por qué TacticalDev"
             title="Hecho para entregas de alto riesgo"

@@ -1,13 +1,13 @@
 ﻿:root {
-  --td-ink: #0b1a2e;
-  --td-ink-2: #0e2440;
-  --td-ink-3: #244267;
-  --td-brand: #1f6fff;
-  --td-brand-2: #0b4ecb;
-  --td-accent: #39c0ff;
-  --td-sand: #f8fafc;
-  --td-mist: #eef4ff;
-  --td-line: #e2e8f3;
+  --td-ink: #0f2a3d;
+  --td-ink-2: #13354d;
+  --td-ink-3: #2a4a63;
+  --td-brand: #2a93c9;
+  --td-brand-2: #1d5f8f;
+  --td-accent: #f08c2e;
+  --td-sand: #f5f8f7;
+  --td-mist: #e6f1f4;
+  --td-line: #d6e5ec;
 }
 
 @theme {

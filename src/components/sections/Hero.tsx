@@ -1,25 +1,27 @@
-﻿import Image from "next/image";
+﻿
 import Button from "@/components/ui/Button";
-import networkBg from "@/assets/images/network-bg.jpg";
+
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section
+      id="top"
+      className="relative z-10 flex min-h-screen items-center overflow-hidden bg-sand"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1e7fa6]/40 via-transparent to-[#7fb24a]/45"
+        aria-hidden="true"
+      />
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-full w-screen -translate-x-1/2"
         aria-hidden="true"
-      >
-        <div className="absolute inset-0 hero-gradient" />
-        <div className="absolute right-0 top-0 h-full w-[68%] hero-diagonal">
-          <div className="absolute inset-0 hero-sheen hero-flow" />
-          <div className="absolute -left-10 top-10 h-[60%] w-[70%] hero-sheen--soft hero-drift" />
-          <div className="absolute bottom-[-10%] right-[-10%] h-[70%] w-[70%] hero-sheen hero-pulse" />
-        </div>
-        <div className="hero-blob absolute -left-24 top-16 h-64 w-64 opacity-80 md:h-80 md:w-80" />
-        <div className="hero-blob absolute right-10 top-1/3 h-72 w-72 opacity-60 md:h-96 md:w-96" />
-        <div className="absolute inset-0 bg-grid opacity-20" />
-      </div>
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
+      />
+      <div
+        className="bg-orb pointer-events-none absolute right-0 top-1/2 h-56 w-56 opacity-60 md:h-72 md:w-72"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-grid opacity-30" />
+      <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
         <div className="space-y-6">
           <div className="hero-reveal hero-reveal--1 inline-flex items-center gap-2 rounded-full bg-mist px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
             Ahora aceptamos socios empresariales
