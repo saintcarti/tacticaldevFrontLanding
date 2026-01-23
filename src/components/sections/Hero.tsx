@@ -1,4 +1,4 @@
-﻿"use client";
+﻿﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -63,7 +63,7 @@ export default function Hero() {
             Software estrategico
             <span className="block text-[#60A5FA]">Desarrollo</span> y arquitectura
           </h1>
-          <p className="hero-reveal hero-reveal--3 max-w-xl text-base text-[#9CA3AF] md:text-lg">
+          <p className="hero-reveal hero-reveal--3 max-w-xl text-justify text-base text-[#9CA3AF] md:text-lg">
             Creamos soluciones empresariales con precision tactica y excelencia
             arquitectonica. Conectamos logica de negocio compleja con ejecucion
             tecnica confiable.

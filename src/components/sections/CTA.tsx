@@ -1,4 +1,4 @@
-﻿import Button from "@/components/ui/Button";
+﻿﻿import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 
 export default function CTA() {
@@ -13,7 +13,7 @@ export default function CTA() {
           <h2 className="text-3xl font-semibold md:text-4xl">
             Listo para escalar tu infraestructura técnica?
           </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm text-white/80 md:text-base">
+            <p className="mx-auto mt-4 max-w-2xl text-justify text-sm text-white/80 md:text-base">
               Súmate a equipos empresariales que confían en TacticalDev para
               arquitectura e ingeniería de misión crítica.
             </p>

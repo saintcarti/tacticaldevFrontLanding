@@ -54,7 +54,7 @@ export default function About() {
               <h4 className="text-lg font-semibold text-white">
                 Pasión por crear
               </h4>
-              <p className="mt-2 text-sm text-white/60">
+              <p className="mt-2 text-justify text-sm text-white/60">
                 Ponemos nuestro conocimiento al servicio de tus proyectos, brindando
                 apoyo técnico integral para materializar diversas ideas con calidad profesional.
               </p>
@@ -70,7 +70,7 @@ export default function About() {
                     <h3 className="mb-2 text-sm font-semibold text-white group-hover:text-brand-2">
                       {signal.title}
                     </h3>
-                    <p className="text-xs leading-relaxed text-white/60 group-hover:text-white/80">
+                    <p className="text-justify text-xs leading-relaxed text-white/60 group-hover:text-white/80">
                       {signal.description}
                     </p>
                   </div>

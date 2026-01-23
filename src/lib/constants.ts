@@ -127,15 +127,15 @@ export const whyUs = [
 export const techStack = [
   {
     title: "Backend & Infra",
-    items: ["Go", "Node.js", "Kubernetes", "Terraform", "AWS", "Azure"],
+    items: ["Go", "Node.js", "Kubernetes", "Terraform", "AWS", "Azure", "y más..."],
   },
   {
     title: "Data & Observabilidad",
-    items: ["PostgreSQL", "Kafka", "Snowflake", "Datadog", "Prometheus", "Grafana"],
+    items: ["PostgreSQL", "Kafka", "Snowflake", "Datadog", "Prometheus", "Grafana", "y más..."],
   },
   {
     title: "Frontend & Producto",
-    items: ["React", "Next.js", "TypeScript", "Figma", "Storybook", "Cypress"],
+    items: ["React", "Next.js", "TypeScript", "Figma", "Storybook", "Cypress", "y más..."],
   },
 ];
 

@@ -35,7 +35,7 @@ export default function Methodology() {
                   <h3 className="text-base font-bold text-white transition-colors group-hover:text-brand-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/60 group-hover:text-white/80">
+                  <p className="text-center text-sm leading-relaxed text-white/60 group-hover:text-white/80">
                     {step.description}
                   </p>
                 </div>

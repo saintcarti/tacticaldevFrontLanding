@@ -59,7 +59,7 @@ class DigitalTransformation {
                     <h3 className="text-lg font-bold text-white transition-colors group-hover:text-brand">
                       {pillar.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-white/60">
+                    <p className="text-justify text-sm leading-relaxed text-white/60">
                       {pillar.description}
                     </p>
                   </div>

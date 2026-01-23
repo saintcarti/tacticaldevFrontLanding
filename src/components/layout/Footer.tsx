@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+﻿﻿import Link from "next/link";
 import { footerColumns } from "@/lib/constants";
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
               TACTICALDEV
             </span>
           </div>
-          <p className="text-sm text-white/70">
+          <p className="text-justify text-sm text-white/70">
             El socio elegido para ingeniería de software empresarial de alto
             riesgo y arquitectura de nube estratégica.
           </p>

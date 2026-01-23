@@ -15,12 +15,16 @@ export default function Projects() {
 
       <Reveal className="mobile-reveal mobile-delay-2 w-full">
         <div className="mx-auto w-full max-w-6xl space-y-12 px-6 py-0">
-          <SectionTitle
-            eyebrow="Portafolio y Visión"
-            title="Construyendo el presente, diseñando el futuro"
-            description="Más que entregar código, entregamos valor. Desde la modernización de sistemas legados hasta la exploración de nuevas fronteras tecnológicas, nuestro trabajo se define por la precisión técnica y la adaptabilidad. Así es como transformamos desafíos en activos digitales duraderos."
-            align="left"
-          />
+          <div className="space-y-6">
+            <SectionTitle
+              eyebrow="Portafolio y Visión"
+              title="Construyendo el presente, diseñando el futuro"
+              align="left"
+            />
+            <p className="max-w-3xl text-justify text-white/70">
+              Más que entregar código, entregamos valor. Desde la modernización de sistemas legados hasta la exploración de nuevas fronteras tecnológicas, nuestro trabajo se define por la precisión técnica y la adaptabilidad. Así es como transformamos desafíos en activos digitales duraderos.
+            </p>
+          </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((study, index) => (
               <Reveal
@@ -54,7 +58,7 @@ export default function Projects() {
                       <h3 className="text-xl font-bold text-white transition-colors group-hover:text-brand-2">
                         {study.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-white/60">
+                      <p className="mt-2 text-justify text-sm leading-relaxed text-white/60">
                         {study.description}
                       </p>
                     </div>
