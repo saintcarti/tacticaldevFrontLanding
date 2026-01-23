@@ -167,15 +167,16 @@ export const footerColumns = [
     ],
   },
   {
-    title: "Empresa",
-    links: ["Proceso", "Casos de estudio", "Tech stack", "Contacto"],
+    title: "Email",
+    links: ["tacticaldev@gmail.com"],
   },
   {
-    title: "Ubicación",
-    links: [
-      "1200 Innovation Drive",
-      "Suite 500",
-      "Palo Alto, CA 94301",
-    ],
+    title: "Dirección",
+    links: ["Santiago de Chile", "8300000"],
   },
+];export const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com" },
+  { label: "Twitter", href: "https://x.com" },
+  { label: "TikTok", href: "https://www.tiktok.com" },
 ];

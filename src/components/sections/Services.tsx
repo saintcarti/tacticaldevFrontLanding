@@ -20,13 +20,13 @@ export default function Services() {
             title="Pilares clave del servicio"
             description="Ejecución precisa en las capas más críticas de tu plataforma."
           />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
             {servicePillars.map((pillar, index) => (
               <Reveal
                 key={pillar.title}
                 className={`mobile-stagger mobile-stagger-${index + 1}`}
               >
-                <Card className="group space-y-4 transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-card">
+                <Card className="group h-full space-y-4 transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-card">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-mist text-brand transition-colors duration-300 ease-out group-hover:bg-accent group-hover:text-white">
                     <span className="text-sm font-semibold">TD</span>
                   </div>

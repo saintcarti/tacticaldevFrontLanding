@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 const variants: Record<ButtonVariant, string> = {
@@ -30,10 +31,12 @@ export default function Button({
   variant = "primary",
   size = "md",
   className,
+  onClick,
 }: ButtonProps) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={`inline-flex items-center justify-center gap-2 rounded-full font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] active:opacity-90 ${variants[variant]} ${sizes[size]} ${className ?? ""}`}
     >
       {children}

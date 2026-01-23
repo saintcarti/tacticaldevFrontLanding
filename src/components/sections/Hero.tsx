@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import Button from "@/components/ui/Button";
 
-const heroImages = ["/imagen2.png", "/imagen6.png"].filter(Boolean);
+const heroImages = ["/cellphone.png","/imagen2.png","/imagen6.png"].filter(Boolean);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,6 +36,8 @@ export default function Hero() {
     return () => window.clearInterval(id);
   }, []);
 
+  const whatsappHref = "https://wa.me/+56982397352";
+
   return (
     <section
       id="top"
@@ -56,21 +58,20 @@ export default function Hero() {
         className="bg-orb pointer-events-none absolute right-0 top-1/2 h-56 w-56 opacity-60 md:h-72 md:w-72 lg:h-96 lg:w-96"
         aria-hidden="true"
       />
-      <div className="relative mx-auto grid w-full max-w-6xl gap-15 px-1 py-16 md:grid-cols-[1.6fr_1fr] md:py-20 lg:py-20">
-        <div className="space-y-4 md:space-y-20 lg:space-y-2">
+      <div className="relative mx-auto grid w-full max-w-5xl gap-15 px-1 py-16 md:mt-12 md:grid-cols-[1.6fr_1fr] md:py-20 lg:py-20">
+        <div className="space-y-4 md:space-y-20 lg:space-y-2 md:translate-x-4">
           
-          <h1 className="hero-reveal hero-reveal--2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-white md:text-6xl lg:text-7xl">
-            Software estrategico
-            <span className="block text-[#60A5FA]">Desarrollo</span> y arquitectura
+          <h1 className="hero-reveal hero-reveal--2 mt-2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-white md:mt-4 md:text-6xl lg:text-7xl">
+            Software Estratégico
+            <span className="block text-[#60A5FA]">Desarrollo</span> Arquitectura
           </h1>
           <p className="hero-reveal hero-reveal--3 max-w-xl text-base text-[#9CA3AF] md:text-lg">
-            Creamos soluciones empresariales con precision tactica y excelencia
-            arquitectonica. Conectamos logica de negocio compleja con ejecucion
-            tecnica confiable.
+            Creamos soluciones empresariales con precisión táctica y excelencia
+            arquitectónica. Conectamos lógica de negocio compleja con ejecución
+            técnica escalable y confiable.
           </p>
           <div className="hero-reveal hero-reveal--4 flex flex-wrap gap-3">
-            <Button href="#contact">Contactanos</Button>
-            
+            <Button href={whatsappHref}>Contáctanos</Button>
           </div>
           <div className="hero-reveal hero-reveal--5 flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-[#9CA3AF]">
            
@@ -87,7 +88,7 @@ export default function Hero() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 24, scale: 0.98 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative flex w-full items-center justify-center"
+                  className="relative flex w-full items-center justify-center translate-x-6 md:translate-x-12"
                 >
                   <Image
                     src={heroImages[activeIndex]}

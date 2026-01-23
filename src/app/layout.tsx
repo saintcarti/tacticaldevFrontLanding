@@ -15,7 +15,7 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "TacticalDev | Desarrollo de software estratégico",
+  title: "TacticalDev",
   description:
     "Desarrollo y arquitectura de software de nivel empresarial para equipos de misión crítica.",
 };
