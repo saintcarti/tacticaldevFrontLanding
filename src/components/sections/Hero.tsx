@@ -4,7 +4,14 @@ import networkBg from "@/assets/images/network-bg.jpg";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section
+      id="top"
+      className="relative z-10 flex min-h-screen items-center overflow-hidden bg-sand"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#1e7fa6]/40 via-transparent to-[#7fb24a]/45"
+        aria-hidden="true"
+      />
       <div
         className="bg-orb pointer-events-none absolute -left-16 top-10 h-48 w-48 opacity-70 md:h-64 md:w-64"
         aria-hidden="true"
@@ -14,7 +21,7 @@ export default function Hero() {
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
+      <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
         <div className="space-y-6">
           <div className="hero-reveal hero-reveal--1 inline-flex items-center gap-2 rounded-full bg-mist px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
             Ahora aceptamos socios empresariales
