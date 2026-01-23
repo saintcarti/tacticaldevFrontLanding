@@ -1,8 +1,9 @@
-﻿export const navLinks = [
+export const navLinks = [
   { label: "Servicios", href: "#services" },
-  { label: "Metodología", href: "#methodology" },
-  { label: "Acerca de", href: "#about" },
-  { label: "Por qué nosotros", href: "#why-us" },
+  { label: "Proyectos", href: "#projects" },
+  { label: "Proceso", href: "#process" },
+  { label: "Testimonios", href: "#testimonials" },
+  { label: "Tech stack", href: "#stack" },
   { label: "Contacto", href: "#contact" },
 ];
 
@@ -61,6 +62,30 @@ export const methodologySteps = [
   },
 ];
 
+export const caseStudies = [
+  {
+    title: "Plataforma de pagos multinube",
+    industry: "Fintech",
+    description:
+      "Arquitectura resiliente con enrutamiento inteligente y control de riesgos en tiempo real.",
+    result: "99.95% de disponibilidad y reducción de latencia del 38%.",
+  },
+  {
+    title: "Orquestación logística",
+    industry: "Supply chain",
+    description:
+      "Motor de optimización para rutas, almacenes y demanda con integración ERP.",
+    result: "24% menos costos operativos y visibilidad end-to-end.",
+  },
+  {
+    title: "Data mesh para retail",
+    industry: "Retail",
+    description:
+      "Modelo de datos federado con gobernanza y capas de seguridad por dominio.",
+    result: "8 semanas para habilitar analítica en 12 unidades de negocio.",
+  },
+];
+
 export const trustSignals = [
   {
     title: "Seguridad primero",
@@ -95,6 +120,42 @@ export const whyUs = [
   },
 ];
 
+export const testimonials = [
+  {
+    quote:
+      "TacticalDev logró estabilizar nuestros servicios críticos en menos de 60 días.",
+    name: "Elena Romero",
+    role: "VP Tecnología, Albor Fintech",
+  },
+  {
+    quote:
+      "El equipo elevó nuestra arquitectura a estándares enterprise sin frenar la entrega.",
+    name: "Luis Ortega",
+    role: "CTO, Northbridge Logistics",
+  },
+  {
+    quote:
+      "Su enfoque táctico nos permitió escalar de manera segura en plena expansión.",
+    name: "Mariana Sanz",
+    role: "Head of Engineering, Nova Retail",
+  },
+];
+
+export const techStack = [
+  {
+    title: "Backend & Infra",
+    items: ["Go", "Node.js", "Kubernetes", "Terraform", "AWS", "Azure"],
+  },
+  {
+    title: "Data & Observabilidad",
+    items: ["PostgreSQL", "Kafka", "Snowflake", "Datadog", "Prometheus", "Grafana"],
+  },
+  {
+    title: "Frontend & Producto",
+    items: ["React", "Next.js", "TypeScript", "Figma", "Storybook", "Cypress"],
+  },
+];
+
 export const footerColumns = [
   {
     title: "Servicios",
@@ -107,7 +168,7 @@ export const footerColumns = [
   },
   {
     title: "Empresa",
-    links: ["Metodología", "Casos de estudio", "Carreras", "Contacto"],
+    links: ["Proceso", "Casos de estudio", "Tech stack", "Contacto"],
   },
   {
     title: "Ubicación",

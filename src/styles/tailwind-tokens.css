@@ -1,13 +1,13 @@
-﻿:root {
-  --td-ink: #0f2a3d;
-  --td-ink-2: #13354d;
-  --td-ink-3: #2a4a63;
-  --td-brand: #2a93c9;
-  --td-brand-2: #1d5f8f;
-  --td-accent: #f08c2e;
-  --td-sand: #f5f8f7;
-  --td-mist: #e6f1f4;
-  --td-line: #d6e5ec;
+:root {
+  --td-ink: #ffffff;
+  --td-ink-2: #6fa8ff;
+  --td-ink-3: #9ca3af;
+  --td-brand: #2f6bff;
+  --td-brand-2: #6fa8ff;
+  --td-accent: #6fa8ff;
+  --td-sand: #0b0d12;
+  --td-mist: #1f2937;
+  --td-line: #1f2937;
 }
 
 @theme {
@@ -21,6 +21,6 @@
   --color-mist: var(--td-mist);
   --color-line: var(--td-line);
   --radius-card: 1.25rem;
-  --shadow-soft: 0 12px 32px rgba(10, 24, 45, 0.12);
-  --shadow-card: 0 20px 48px rgba(10, 24, 45, 0.16);
+  --shadow-soft: 0 12px 32px rgba(11, 13, 18, 0.45);
+  --shadow-card: 0 22px 60px rgba(11, 13, 18, 0.6);
 }

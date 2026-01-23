@@ -7,7 +7,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-sand min-h-screen flex items-center"
+      className="relative bg-sand min-h-screen flex items-center"
     >
       <div
         className="bg-orb pointer-events-none absolute -right-12 top-12 h-44 w-44 opacity-50 md:h-60 md:w-60"

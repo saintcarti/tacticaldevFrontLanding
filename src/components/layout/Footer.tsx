@@ -3,7 +3,7 @@ import { footerColumns } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="bg-sand text-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-4">
           <div className="flex items-center gap-3">

@@ -21,7 +21,7 @@ export default function CTA() {
               <Button href="#contact" variant="secondary">
                 Inicia tu consultoría
               </Button>
-              <Button href="#contact" className="bg-ink text-white hover:bg-ink-2">
+              <Button href="#contact" className="bg-sand text-white hover:bg-line">
                 Habla con un experto
               </Button>
             </div>
