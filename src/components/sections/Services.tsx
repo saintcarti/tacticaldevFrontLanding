@@ -7,18 +7,39 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative bg-sand min-h-screen flex items-center"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#0b1224] py-20 text-white"
     >
+      {/* Background Effects */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e3a8a]/20 via-[#0b1224] to-[#0b1224]" />
+      <div className="absolute inset-0 bg-grid opacity-[0.03]" />
+
+      {/* Decorative Code Background */}
+      <div className="pointer-events-none absolute left-0 top-20 -z-10 hidden select-none font-mono text-sm leading-relaxed text-white/10 opacity-[0.05] lg:block">
+        <pre>{`
+class DigitalTransformation {
+  constructor(vision) {
+    this.vision = vision;
+    this.stack = new TechStack();
+  }
+
+  async execute() {
+    await this.stack.optimize();
+    return "Success";
+  }
+}
+        `}</pre>
+      </div>
+
       <div
         className="bg-orb pointer-events-none absolute -right-12 top-12 h-44 w-44 opacity-50 md:h-60 md:w-60"
         aria-hidden="true"
       />
-      <Reveal className="mobile-reveal mobile-delay-1 md:translate-y-6 md:opacity-0 md:[&.is-visible]:translate-y-0 md:[&.is-visible]:opacity-100 md:transition md:duration-700 md:ease-out">
-        <div className="mx-auto w-full max-w-6xl space-y-10 px-6 py-0">
+      <Reveal className="mobile-reveal mobile-delay-1 w-full md:translate-y-6 md:opacity-0 md:[&.is-visible]:translate-y-0 md:[&.is-visible]:opacity-100 md:transition md:duration-700 md:ease-out">
+        <div className="mx-auto w-full max-w-6xl space-y-12 px-6 py-0">
           <SectionTitle
-            eyebrow="Especialidades"
-            title="Pilares clave del servicio"
-            description="Ejecución precisa en las capas más críticas de tu plataforma."
+            eyebrow="Nuestros Servicios"
+            title="Soluciones técnicas integrales"
+            description="Desde la concepción hasta el despliegue, cubrimos todo el ciclo de vida del desarrollo de software moderno con un enfoque en calidad y escalabilidad."
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
             {servicePillars.map((pillar, index) => (
@@ -26,21 +47,28 @@ export default function Services() {
                 key={pillar.title}
                 className={`mobile-stagger mobile-stagger-${index + 1}`}
               >
-                <Card className="group h-full space-y-4 transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-card">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-mist text-brand transition-colors duration-300 ease-out group-hover:bg-accent group-hover:text-white">
-                    <span className="text-sm font-semibold">TD</span>
+                <Card className="group relative h-full space-y-4 overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand/10 hover:bg-white/10">
+                  {/* Hover decoration */}
+                  <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-brand/10 transition-transform duration-500 group-hover:scale-150" />
+
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                    {getIconForService(pillar.title)}
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-ink transition-colors duration-300 ease-out group-hover:text-ink-2">
+
+                  <div className="relative space-y-2">
+                    <h3 className="text-lg font-bold text-white transition-colors group-hover:text-brand">
                       {pillar.title}
                     </h3>
-                    <p className="text-sm text-ink-3 transition-colors duration-300 ease-out group-hover:text-ink">
+                    <p className="text-justify text-sm leading-relaxed text-white/60">
                       {pillar.description}
                     </p>
                   </div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent transition-colors duration-300 ease-out group-hover:text-ink-2">
-                    {pillar.tag}
-                  </p>
+
+                  <div className="relative pt-2">
+                    <span className="inline-block rounded-md bg-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white/70 transition-colors group-hover:bg-brand/20 group-hover:text-brand">
+                      {pillar.tag}
+                    </span>
+                  </div>
                 </Card>
               </Reveal>
             ))}
@@ -49,4 +77,39 @@ export default function Services() {
       </Reveal>
     </section>
   );
+}
+
+function getIconForService(title: string) {
+  switch (title) {
+    case "Software a medida":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 18" />
+        </svg>
+      );
+    case "Arquitectura":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+        </svg>
+      );
+    case "Sistemas backend":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+        </svg>
+      );
+    case "Estrategia cloud":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+        </svg>
+      );
+    default:
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5" />
+        </svg>
+      );
+  }
 }

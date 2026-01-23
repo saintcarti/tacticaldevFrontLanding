@@ -1,8 +1,8 @@
 export const navLinks = [
+  { label: "Sobre Nosotros", href: "#about" },
   { label: "Servicios", href: "#services" },
   { label: "Proyectos", href: "#projects" },
   { label: "Proceso", href: "#process" },
-  { label: "Testimonios", href: "#testimonials" },
   { label: "Tech stack", href: "#stack" },
   { label: "Contacto", href: "#contact" },
 ];
@@ -29,7 +29,7 @@ export const servicePillars = [
   {
     title: "Estrategia cloud",
     description:
-      "Migración y modernización sin fricciones en AWS, Azure o GCP.",
+      "Migración y modernización sin fricciones en cualquier entorno de nube.",
     tag: "Infraestructura",
   },
 ];
@@ -64,25 +64,28 @@ export const methodologySteps = [
 
 export const caseStudies = [
   {
-    title: "Plataforma de pagos multinube",
-    industry: "Fintech",
+    title: "GearScanNfc",
+    industry: "IoT Industrial",
     description:
-      "Arquitectura resiliente con enrutamiento inteligente y control de riesgos en tiempo real.",
-    result: "99.95% de disponibilidad y reducción de latencia del 38%.",
+      "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
+    result: "Digitalización de activos y optimización del mantenimiento.",
+    href: "",
   },
   {
-    title: "Orquestación logística",
-    industry: "Supply chain",
+    title: "CEECNA",
+    industry: "Gestión de Crisis",
     description:
-      "Motor de optimización para rutas, almacenes y demanda con integración ERP.",
-    result: "24% menos costos operativos y visibilidad end-to-end.",
+      "Centro Estratégico de Emergencias y Catástrofes Nacionales. Plataforma de coordinación y respuesta unificada.",
+    result: "Centralización de inteligencia para la toma de decisiones estratégicas.",
+    href: "https://ceecna.cl",
   },
   {
-    title: "Data mesh para retail",
-    industry: "Retail",
+    title: "(En Proceso)",
+    industry: "Creator Economy",
     description:
-      "Modelo de datos federado con gobernanza y capas de seguridad por dominio.",
-    result: "8 semanas para habilitar analítica en 12 unidades de negocio.",
+      "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo y conectar directamente con su audiencia en un entorno privado.",
+    result: "Infraestructura de alta concurrencia para streaming y pagos seguros.",
+    href: "#",
   },
 ];
 
@@ -120,39 +123,19 @@ export const whyUs = [
   },
 ];
 
-export const testimonials = [
-  {
-    quote:
-      "TacticalDev logró estabilizar nuestros servicios críticos en menos de 60 días.",
-    name: "Elena Romero",
-    role: "VP Tecnología, Albor Fintech",
-  },
-  {
-    quote:
-      "El equipo elevó nuestra arquitectura a estándares enterprise sin frenar la entrega.",
-    name: "Luis Ortega",
-    role: "CTO, Northbridge Logistics",
-  },
-  {
-    quote:
-      "Su enfoque táctico nos permitió escalar de manera segura en plena expansión.",
-    name: "Mariana Sanz",
-    role: "Head of Engineering, Nova Retail",
-  },
-];
 
 export const techStack = [
   {
     title: "Backend & Infra",
-    items: ["Go", "Node.js", "Kubernetes", "Terraform", "AWS", "Azure"],
+    items: ["Go", "Node.js", "Kubernetes", "Terraform", "AWS", "Azure", "y más..."],
   },
   {
     title: "Data & Observabilidad",
-    items: ["PostgreSQL", "Kafka", "Snowflake", "Datadog", "Prometheus", "Grafana"],
+    items: ["PostgreSQL", "Kafka", "Snowflake", "Datadog", "Prometheus", "Grafana", "y más..."],
   },
   {
     title: "Frontend & Producto",
-    items: ["React", "Next.js", "TypeScript", "Figma", "Storybook", "Cypress"],
+    items: ["React", "Next.js", "TypeScript", "Figma", "Storybook", "Cypress", "y más..."],
   },
 ];
 

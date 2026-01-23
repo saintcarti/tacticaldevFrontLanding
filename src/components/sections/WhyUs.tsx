@@ -1,4 +1,4 @@
-﻿import SectionTitle from "@/components/ui/SectionTitle";
+﻿﻿import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import Reveal from "@/components/ui/Reveal";
 import { whyUs } from "@/lib/constants";
@@ -23,7 +23,7 @@ export default function WhyUs() {
                   <h3 className="text-lg font-semibold text-ink transition-colors duration-300 ease-out group-hover:text-ink-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-ink-3 transition-colors duration-300 ease-out group-hover:text-ink">
+                  <p className="text-justify text-sm text-ink-3 transition-colors duration-300 ease-out group-hover:text-ink">
                     {item.description}
                   </p>
                 </Card>
