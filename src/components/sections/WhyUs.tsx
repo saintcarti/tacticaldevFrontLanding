@@ -1,11 +1,11 @@
-﻿﻿import SectionTitle from "@/components/ui/SectionTitle";
+﻿import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import Reveal from "@/components/ui/Reveal";
 import { whyUs } from "@/lib/constants";
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="bg-sand min-h-screen flex items-center">
+    <section id="why-us" className="bg-sand min-h-screen flex items-center py-20">
       <Reveal className="mobile-reveal mobile-delay-4">
         <div className="mx-auto w-full max-w-6xl space-y-10 px-6 py-0">
           <SectionTitle

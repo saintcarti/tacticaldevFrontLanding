@@ -1,4 +1,4 @@
-﻿"use client";
+﻿﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -20,15 +20,27 @@ export default function Navbar() {
     if (!target) return;
 
     const header = document.querySelector("header");
-    const headerOffset =
-      header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
-    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    let headerOffset = 0;
+    if (header) {
+      const navBar = header.firstElementChild;
+      headerOffset = navBar ? navBar.getBoundingClientRect().height : header.getBoundingClientRect().height;
+    }
+    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset + 50;
 
     window.scrollTo({ top, behavior: "smooth" });
     window.history.replaceState(null, "", href);
     setIsOpen(false);
   };
-
+  const WhatsAppIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className} 
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+);
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 0);
     onScroll();
@@ -39,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#020617]/95 text-white backdrop-blur shadow-[0_6px_18px_rgba(2,6,23,0.6)]"
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#020617]/95 text-white backdrop-blur shadow-[0_6px_18px_rgba(2,6,23,0.35)]"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="#top" className="flex items-center">
@@ -69,10 +81,8 @@ export default function Navbar() {
               href="https://wa.me/+56982397352"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-[#020617] transition hover:bg-[#1fb85a]"
             >
-              <span className="h-4 w-4">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 3.5a8.5 8.5 0 0 0-7.23 12.91L4 21l4.76-1.24A8.5 8.5 0 1 0 12 3.5Zm0 2a6.5 6.5 0 0 1 5.56 9.96l-.36.58-2.7.7-.63-.33a9.82 9.82 0 0 1-3.74-3.73l-.33-.64.71-2.7.58-.36A6.47 6.47 0 0 1 12 5.5Zm3.25 8.14c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.64-.61.77-.11.13-.23.15-.43.05-.2-.1-.86-.32-1.64-1.03-.6-.54-1.01-1.22-1.13-1.42-.12-.2-.01-.31.09-.41l.3-.35c.1-.11.13-.19.2-.32.07-.13.04-.24-.02-.34-.06-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.33.05-.5.24-.17.2-.66.64-.66 1.56 0 .92.68 1.81.77 1.94.1.13 1.34 2.06 3.25 2.89.45.2.8.32 1.07.41.45.14.86.12 1.18.07.36-.05 1.18-.48 1.35-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.38-.23Z" />
-                </svg>
+              <span className="flex h-6 w-6 items-center justify-center">
+                <WhatsAppIcon className="h-5 w-5 fill-white" />
               </span>
               WhatsApp
             </Link>
@@ -110,10 +120,8 @@ export default function Navbar() {
               href="https://wa.me/+56982397352"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-[#020617] transition hover:bg-[#1fb85a]"
             >
-              <span className="h-4 w-4">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 3.5a8.5 8.5 0 0 0-7.23 12.91L4 21l4.76-1.24A8.5 8.5 0 1 0 12 3.5Zm0 2a6.5 6.5 0 0 1 5.56 9.96l-.36.58-2.7.7-.63-.33a9.82 9.82 0 0 1-3.74-3.73l-.33-.64.71-2.7.58-.36A6.47 6.47 0 0 1 12 5.5Zm3.25 8.14c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.64-.61.77-.11.13-.23.15-.43.05-.2-.1-.86-.32-1.64-1.03-.6-.54-1.01-1.22-1.13-1.42-.12-.2-.01-.31.09-.41l.3-.35c.1-.11.13-.19.2-.32.07-.13.04-.24-.02-.34-.06-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.33.05-.5.24-.17.2-.66.64-.66 1.56 0 .92.68 1.81.77 1.94.1.13 1.34 2.06 3.25 2.89.45.2.8.32 1.07.41.45.14.86.12 1.18.07.36-.05 1.18-.48 1.35-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.38-.23Z" />
-                </svg>
+              <span className="flex h-4 w-4 items-center justify-center">
+                <WhatsAppIcon className="h-3.5 w-3.5 fill-white" />
               </span>
               WhatsApp
             </Link>
@@ -129,6 +137,15 @@ export default function Navbar() {
         }`}
         onClick={() => setIsOpen(false)}
       />
+      <Link
+        href="https://wa.me/+56982397352"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-transform hover:scale-110 active:scale-95 md:hidden"
+        aria-label="Contactar por WhatsApp"
+      >
+        <WhatsAppIcon className="h-8 w-8 fill-white" />
+      </Link>
     </>
   );
 }

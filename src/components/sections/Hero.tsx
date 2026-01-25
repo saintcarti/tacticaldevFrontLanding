@@ -58,7 +58,7 @@ export default function Hero() {
         className="bg-orb pointer-events-none absolute right-0 top-1/2 h-56 w-56 opacity-60 md:h-72 md:w-72 lg:h-96 lg:w-96"
         aria-hidden="true"
       />
-      <div className="relative mx-auto grid w-full max-w-5xl gap-15 px-1 py-16 md:mt-12 md:grid-cols-[1.6fr_1fr] md:py-20 lg:py-20">
+      <div className="relative mx-auto grid w-full max-w-5xl gap-10 px-6 pb-20 pt-32 md:mt-12 md:grid-cols-[1.6fr_1fr]">
         <div className="space-y-4 md:space-y-20 lg:space-y-2 md:translate-x-4">
           
           <h1 className="hero-reveal hero-reveal--2 mt-2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-white md:mt-4 md:text-6xl lg:text-7xl">
