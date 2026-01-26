@@ -28,7 +28,7 @@ const socialIcons: Record<string, ReactNode> = {
 
 export default function Footer() {
   return (
-    <footer className="bg-sand text-white">
+    <footer className="bg-sand text-ink">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-13 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
         <div className="space-y-2">
           <div className="flex items-center">
@@ -40,15 +40,15 @@ export default function Footer() {
               className="h-20 w-auto object-contain"
             />
           </div>
-          <p className="text-sm text-white/70">
+          <p className="text-sm text-ink/70">
             Soluciones de software empresarial construidas con precisión arquitectónica y enfoque en escala.
           </p>
-          <div className="flex items-center gap-3 text-white/60">
+          <div className="flex items-center gap-3 text-ink/60">
             {socialLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/70 transition hover:border-white/30 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-line/60 bg-ink/10 text-ink/70 transition hover:border-line/90 hover:bg-ink/20 hover:text-ink"
                 aria-label={link.label}
               >
                 <span className="h-4 w-4">{socialIcons[link.label]}</span>
@@ -58,8 +58,8 @@ export default function Footer() {
         </div>
         {footerColumns.map((column) => (
           <div key={column.title} className="space-y-3 text-sm">
-            <p className="font-semibold text-white">{column.title}</p>
-            <ul className="space-y-2 text-white/70">
+            <p className="font-semibold text-ink">{column.title}</p>
+            <ul className="space-y-2 text-ink/70">
               {column.links.map((link) => (
                 <li key={link}>{link}</li>
               ))}
@@ -67,9 +67,10 @@ export default function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-white/10 px-6 py-6 text-center text-xs text-white/50">
+      <div className="border-t border-line/60 px-6 py-6 text-center text-xs text-ink/50">
         (c) 2026 TacticalDev Engineering Group. Todos los derechos reservados.
       </div>
     </footer>
   );
 }
+

@@ -4,10 +4,68 @@
   --td-ink-3: #9ca3af;
   --td-brand: #2f6bff;
   --td-brand-2: #6fa8ff;
-  --td-accent: #6fa8ff;
+  --td-accent: #60a5fa;
   --td-sand: #0b0d12;
+  --td-surface: #0b1224;
+  --td-surface-2: #0f172a;
+  --td-surface-3: #0f1e3a;
+  --td-nav: rgba(2, 6, 23, 0.95);
   --td-mist: #1f2937;
   --td-line: #1f2937;
+  --td-line-soft: rgba(255, 255, 255, 0.1);
+  --td-grid-line: rgba(255, 255, 255, 0.08);
+  --td-hero-bg: #020617;
+  --td-hero-from: #0b1224;
+  --td-hero-via: #020617;
+  --td-hero-to: #0f172a;
+  --td-spot-1: rgba(30, 58, 138, 0.2);
+  --td-spot-2: rgba(47, 107, 255, 0.15);
+  --td-cta-from: #0b1224;
+  --td-cta-via: #0a1630;
+  --td-cta-to: #102a5c;
+  --td-cta-orb-1: rgba(47, 107, 255, 0.15);
+  --td-cta-orb-2: rgba(96, 165, 250, 0.1);
+  --td-orb: rgba(47, 107, 255, 0.22);
+  --td-on-brand: #020617;
+  --td-shadow-soft: 0 12px 32px rgba(11, 13, 18, 0.45);
+  --td-shadow-card: 0 22px 60px rgba(11, 13, 18, 0.6);
+  --td-card-shadow: 0 28px 80px rgba(2, 6, 23, 0.55);
+  --td-nav-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
+}
+
+:root[data-theme="light"] {
+  --td-ink: #0b0d12;
+  --td-ink-2: #1d4ed8;
+  --td-ink-3: #475569;
+  --td-brand: #2563eb;
+  --td-brand-2: #60a5fa;
+  --td-accent: #2563eb;
+  --td-sand: #cbd5e1;
+  --td-surface: #ffffff;
+  --td-surface-2: #f1f5f9;
+  --td-surface-3: #e2e8f0;
+  --td-nav: rgba(203, 213, 225, 0.95);
+  --td-mist: #f1f5f9;
+  --td-line: #e2e8f0;
+  --td-line-soft: rgba(15, 23, 42, 0.12);
+  --td-grid-line: rgba(15, 23, 42, 0.08);
+  --td-hero-bg: #f8fafc;
+  --td-hero-from: #f8fafc;
+  --td-hero-via: #f1f5f9;
+  --td-hero-to: #e2e8f0;
+  --td-spot-1: rgba(37, 99, 235, 0.12);
+  --td-spot-2: rgba(99, 102, 241, 0.1);
+  --td-cta-from: #f8fafc;
+  --td-cta-via: #eef2ff;
+  --td-cta-to: #dbeafe;
+  --td-cta-orb-1: rgba(37, 99, 235, 0.12);
+  --td-cta-orb-2: rgba(96, 165, 250, 0.12);
+  --td-orb: rgba(37, 99, 235, 0.18);
+  --td-on-brand: #0b0d12;
+  --td-shadow-soft: 0 12px 32px rgba(15, 23, 42, 0.12);
+  --td-shadow-card: 0 22px 60px rgba(15, 23, 42, 0.18);
+  --td-card-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  --td-nav-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
 }
 
 @theme {
@@ -18,9 +76,15 @@
   --color-brand-2: var(--td-brand-2);
   --color-accent: var(--td-accent);
   --color-sand: var(--td-sand);
+  --color-surface: var(--td-surface);
+  --color-surface-2: var(--td-surface-2);
+  --color-surface-3: var(--td-surface-3);
+  --color-nav: var(--td-nav);
   --color-mist: var(--td-mist);
   --color-line: var(--td-line);
+  --color-line-soft: var(--td-line-soft);
+  --color-on-brand: var(--td-on-brand);
   --radius-card: 1.25rem;
-  --shadow-soft: 0 12px 32px rgba(11, 13, 18, 0.45);
-  --shadow-card: 0 22px 60px rgba(11, 13, 18, 0.6);
+  --shadow-soft: var(--td-shadow-soft);
+  --shadow-card: var(--td-shadow-card);
 }

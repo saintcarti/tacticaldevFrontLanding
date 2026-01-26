@@ -6,10 +6,10 @@ export default function Methodology() {
   return (
     <section
       id="process"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0b1224] py-20 text-white"
+      className="relative flex min-h-screen items-center overflow-hidden bg-surface py-20 text-ink"
     >
       {/* Background Effects */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#1e3a8a]/10 via-[#0b1224] to-[#0b1224]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[color:var(--td-spot-1)] via-surface to-surface" />
       <div className="absolute inset-0 bg-grid opacity-[0.03]" />
 
       <Reveal className="mobile-reveal mobile-delay-3 w-full">
@@ -21,26 +21,26 @@ export default function Methodology() {
             align="center"
           />
           <ol className="relative grid gap-6 md:grid-cols-5 md:gap-8">
-            <div className="absolute left-0 right-0 top-6 hidden h-px bg-white/10 md:block md:z-0" />
+            <div className="absolute left-0 right-0 top-6 hidden h-px bg-line/60 md:block md:z-0" />
             {methodologySteps.map((step, index) => (
               <li
                 key={step.step}
                 className="group relative z-10 flex gap-4 transition duration-300 ease-out hover:-translate-y-1 md:flex-col md:items-center md:text-center"
               >
                 <div className="absolute inset-0 -z-10 scale-75 rounded-2xl bg-brand/10 opacity-0 blur-2xl transition-all duration-500 group-hover:scale-100 group-hover:opacity-100" />
-                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#0b1224] text-sm font-bold text-white transition-all duration-300 group-hover:border-brand group-hover:bg-brand group-hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line/60 bg-surface text-sm font-bold text-ink transition-all duration-300 group-hover:border-brand group-hover:bg-brand group-hover:text-white group-hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
                   {step.step}
                 </div>
                 <div className="relative space-y-2 transition-colors duration-300 ease-out">
-                  <h3 className="text-base font-bold text-white transition-colors group-hover:text-brand-2">
+                  <h3 className="text-base font-bold text-ink transition-colors group-hover:text-brand-2">
                     {step.title}
                   </h3>
-                  <p className="text-center text-sm leading-relaxed text-white/60 group-hover:text-white/80">
+                  <p className="text-center text-sm leading-relaxed text-ink/60 group-hover:text-ink/80">
                     {step.description}
                   </p>
                 </div>
                 {index < methodologySteps.length - 1 ? (
-                  <span className="absolute left-6 top-12 h-[calc(100%-3rem)] w-px bg-white/10 md:hidden" />
+                  <span className="absolute left-6 top-12 h-[calc(100%-3rem)] w-px bg-line/60 md:hidden" />
                 ) : null}
               </li>
             ))}

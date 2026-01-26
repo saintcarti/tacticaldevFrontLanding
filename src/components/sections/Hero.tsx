@@ -42,15 +42,15 @@ export default function Hero() {
     <section
       id="top"
       ref={sectionRef}
-      className="relative z-10 flex min-h-screen items-center overflow-hidden bg-[#020617]"
+      className="relative z-10 flex min-h-screen items-center overflow-hidden bg-[color:var(--td-hero-bg)]"
     >
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 origin-top bg-[#020617]"
+        className="pointer-events-none absolute inset-0 origin-top bg-[color:var(--td-hero-bg)]"
         style={{ y: curtainY, scaleY: curtainScale, opacity: curtainOpacity }}
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0b1224] via-[#020617] to-[#0f172a]"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[color:var(--td-hero-from)] via-[color:var(--td-hero-via)] to-[color:var(--td-hero-to)]"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-grid opacity-5" />
@@ -61,11 +61,11 @@ export default function Hero() {
       <div className="relative mx-auto grid w-full max-w-5xl gap-10 px-6 pb-20 pt-32 md:mt-12 md:grid-cols-[1.6fr_1fr]">
         <div className="space-y-4 md:space-y-20 lg:space-y-2 md:translate-x-4">
           
-          <h1 className="hero-reveal hero-reveal--2 mt-2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-white md:mt-4 md:text-6xl lg:text-7xl">
+          <h1 className="hero-reveal hero-reveal--2 mt-2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-ink md:mt-4 md:text-6xl lg:text-7xl">
             Software Estratégico
-            <span className="block text-[#60A5FA]">Desarrollo</span> Arquitectura
+            <span className="block text-accent">Desarrollo</span> Arquitectura
           </h1>
-          <p className="hero-reveal hero-reveal--3 max-w-xl text-base text-[#9CA3AF] md:text-lg">
+          <p className="hero-reveal hero-reveal--3 max-w-xl text-base text-ink-3 md:text-lg">
             Creamos soluciones empresariales con precisión táctica y excelencia
             arquitectónica. Conectamos lógica de negocio compleja con ejecución
             técnica escalable y confiable.
@@ -73,7 +73,7 @@ export default function Hero() {
           <div className="hero-reveal hero-reveal--4 flex flex-wrap gap-3">
             <Button href={whatsappHref}>Contáctanos</Button>
           </div>
-          <div className="hero-reveal hero-reveal--5 flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-[#9CA3AF]">
+          <div className="hero-reveal hero-reveal--5 flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-ink-3">
            
           </div>
         </div>

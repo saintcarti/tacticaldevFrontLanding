@@ -7,14 +7,14 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0b1224] py-20 text-white"
+      className="relative flex min-h-screen items-center overflow-hidden bg-surface py-20 text-ink"
     >
       {/* Background Effects */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e3a8a]/20 via-[#0b1224] to-[#0b1224]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[color:var(--td-spot-1)] via-surface to-surface" />
       <div className="absolute inset-0 bg-grid opacity-[0.03]" />
 
       {/* Decorative Code Background */}
-      <div className="pointer-events-none absolute left-0 top-20 -z-10 hidden select-none font-mono text-sm leading-relaxed text-white/10 opacity-[0.05] lg:block">
+      <div className="pointer-events-none absolute left-0 top-20 -z-10 hidden select-none font-mono text-sm leading-relaxed text-ink/10 opacity-[0.05] lg:block">
         <pre>{`
 class DigitalTransformation {
   constructor(vision) {
@@ -47,25 +47,25 @@ class DigitalTransformation {
                 key={pillar.title}
                 className={`mobile-stagger mobile-stagger-${index + 1}`}
               >
-                <Card className="group relative h-full space-y-4 overflow-hidden border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand/10 hover:bg-white/10">
+                <Card className="group relative h-full space-y-4 overflow-hidden border border-line/60 bg-ink/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand/10 hover:bg-ink/10">
                   {/* Hover decoration */}
                   <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-brand/10 transition-transform duration-500 group-hover:scale-150" />
 
-                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-ink/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
                     {getIconForService(pillar.title)}
                   </div>
 
                   <div className="relative space-y-2">
-                    <h3 className="text-lg font-bold text-white transition-colors group-hover:text-brand">
+                    <h3 className="text-lg font-bold text-ink transition-colors group-hover:text-brand">
                       {pillar.title}
                     </h3>
-                    <p className="text-justify text-sm leading-relaxed text-white/60">
+                    <p className="text-justify text-sm leading-relaxed text-ink/60">
                       {pillar.description}
                     </p>
                   </div>
 
                   <div className="relative pt-2">
-                    <span className="inline-block rounded-md bg-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white/70 transition-colors group-hover:bg-brand/20 group-hover:text-brand">
+                    <span className="inline-block rounded-md bg-ink/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-ink/70 transition-colors group-hover:bg-brand/20 group-hover:text-brand">
                       {pillar.tag}
                     </span>
                   </div>

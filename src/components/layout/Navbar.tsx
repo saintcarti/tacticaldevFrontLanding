@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Switch } from "@heroui/switch";
 import { navLinks } from "@/lib/constants";
 
 // Fix: Component defined outside to prevent re-creation on every render
@@ -17,8 +18,43 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const SunIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 3.75v1.5m0 13.5v1.5m8.25-8.25h-1.5m-13.5 0h-1.5m12.02-6.02-1.06 1.06M6.29 17.71l-1.06 1.06m12.02 0-1.06-1.06M6.29 6.29 5.23 5.23M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z"
+    />
+  </svg>
+);
+
+const MoonIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"
+    />
+  </svg>
+);
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
   // Removed unused isScrolled state to fix ESLint warning
 
   const handleAnchorClick = (
@@ -46,10 +82,24 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("td-theme");
+    const theme = storedTheme === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    setIsLightMode(theme === "light");
+  }, []);
+
+  const handleThemeChange = (value: boolean) => {
+    const theme = value ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("td-theme", theme);
+    setIsLightMode(value);
+  };
+
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#020617]/95 text-white backdrop-blur shadow-[0_6px_18px_rgba(2,6,23,0.35)]"
+        className="fixed inset-x-0 top-0 z-50 border-b border-line-soft bg-nav text-ink backdrop-blur shadow-[var(--td-nav-shadow)]"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="#top" className="flex items-center">
@@ -62,22 +112,42 @@ export default function Navbar() {
               priority
             />
           </Link>
-          <nav className="hidden items-center gap-6 text-sm text-white/80 md:flex">
+          <nav className="hidden items-center gap-6 text-sm text-ink/80 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-white"
+                className="hover:text-ink"
                 onClick={(event) => handleAnchorClick(event, link.href)}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-4 md:flex">
+            <Switch
+              aria-label={isLightMode ? "Cambiar a modo oscuro" : "Cambiar a modo claro"}
+              isSelected={isLightMode}
+              onValueChange={handleThemeChange}
+              size="sm"
+              startContent={<MoonIcon />}
+              endContent={<SunIcon />}
+              classNames={{
+                base: "group inline-flex items-center",
+                hiddenInput: "sr-only",
+                wrapper:
+                  "relative inline-flex h-7 w-12 items-center rounded-full border border-line/60 bg-ink/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] transition-colors duration-300 ease-out group-data-[selected=true]:bg-brand group-data-[selected=true]:border-brand/70 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-brand/40 group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-surface",
+                thumb:
+                  "absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform duration-300 ease-out group-data-[selected=true]:translate-x-5",
+                startContent:
+                  "absolute left-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/70",
+                endContent:
+                  "absolute right-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/90",
+              }}
+            />
             <Link
               href="https://wa.me/+56991338717"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-[#020617] transition hover:bg-[#1fb85a]"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-on-brand transition hover:bg-[#1fb85a]"
             >
               <span className="flex h-6 w-6 items-center justify-center">
                 <WhatsAppIcon className="h-5 w-5 fill-white" />
@@ -87,36 +157,61 @@ export default function Navbar() {
           </div>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-white md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line/60 text-ink md:hidden"
             aria-label="Abrir menu"
             aria-expanded={isOpen}
             onClick={() => setIsOpen((prev) => !prev)}
           >
             <span className="sr-only">Abrir menú</span>
             <div className="flex flex-col gap-1.5">
-              <span className="h-0.5 w-5 bg-white" />
-              <span className="h-0.5 w-5 bg-white" />
-              <span className="h-0.5 w-5 bg-white" />
+              <span className="h-0.5 w-5 bg-ink" />
+              <span className="h-0.5 w-5 bg-ink" />
+              <span className="h-0.5 w-5 bg-ink" />
             </div>
           </button>
         </div>
         <div
-          className={`md:hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} overflow-hidden border-t border-white/10 bg-[#0b1224] transition-all duration-300 ease-out`}
+          className={`md:hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} overflow-hidden border-t border-line/50 bg-surface transition-all duration-300 ease-out`}
         >
-          <div className="flex flex-col gap-4 px-6 py-4 text-sm text-white/80">
+          <div className="flex flex-col gap-4 px-6 py-4 text-sm text-ink/80">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-white"
+                className="hover:text-ink"
                 onClick={(event) => handleAnchorClick(event, link.href)}
               >
                 {link.label}
               </Link>
             ))}
+            <div className="flex items-center justify-between gap-3 rounded-xl border border-line/50 bg-ink/5 px-4 py-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
+                Tema
+              </span>
+              <Switch
+                aria-label={isLightMode ? "Cambiar a modo oscuro" : "Cambiar a modo claro"}
+                isSelected={isLightMode}
+                onValueChange={handleThemeChange}
+                size="sm"
+                startContent={<MoonIcon />}
+                endContent={<SunIcon />}
+                classNames={{
+                  base: "group inline-flex items-center",
+                  hiddenInput: "sr-only",
+                  wrapper:
+                    "relative inline-flex h-7 w-12 items-center rounded-full border border-line/60 bg-ink/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] transition-colors duration-300 ease-out group-data-[selected=true]:bg-brand group-data-[selected=true]:border-brand/70 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-brand/40 group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-surface",
+                  thumb:
+                    "absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform duration-300 ease-out group-data-[selected=true]:translate-x-5",
+                  startContent:
+                    "absolute left-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/70",
+                  endContent:
+                    "absolute right-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/90",
+                }}
+              />
+            </div>
             <Link
               href="https://wa.me/+56991338717"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-[#020617] transition hover:bg-[#1fb85a]"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-on-brand transition hover:bg-[#1fb85a]"
             >
               <span className="flex h-4 w-4 items-center justify-center">
                 <WhatsAppIcon className="h-3.5 w-3.5 fill-white" />
