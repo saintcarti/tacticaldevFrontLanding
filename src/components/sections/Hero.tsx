@@ -36,7 +36,7 @@ export default function Hero() {
     return () => window.clearInterval(id);
   }, []);
 
-  const whatsappHref = "https://wa.me/+56982397352";
+  const whatsappHref = "https://wa.me/+56991338717";
 
   return (
     <section

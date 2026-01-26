@@ -64,20 +64,21 @@ export const methodologySteps = [
 
 export const caseStudies = [
   {
-    title: "GearScanNfc",
-    industry: "IoT Industrial",
-    description:
-      "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
-    result: "Digitalización de activos y optimización del mantenimiento.",
-    href: "",
-  },
-  {
     title: "CEECNA",
     industry: "Gestión de Crisis",
     description:
       "Centro Estratégico de Emergencias y Catástrofes Nacionales. Plataforma de coordinación y respuesta unificada.",
     result: "Centralización de inteligencia para la toma de decisiones estratégicas.",
     href: "https://ceecna.cl",
+    
+  },
+  {
+    title: "GearScanNfc",
+    industry: "IoT Industrial",
+    description:
+      "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
+    result: "Digitalización de activos y optimización del mantenimiento.",
+    href: "",
   },
   {
     title: "(En Proceso)",
