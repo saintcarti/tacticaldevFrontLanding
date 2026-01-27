@@ -62,7 +62,16 @@ export const methodologySteps = [
   },
 ];
 
-export const caseStudies = [
+type CaseStudy = {
+  title: string;
+  industry: string;
+  description: string;
+  result: string;
+  href: string;
+  imageSrc?: string;
+};
+
+export const caseStudies: CaseStudy[] = [
   {
     title: "CEECNA",
     industry: "Gestión de Crisis",
@@ -70,6 +79,7 @@ export const caseStudies = [
       "Centro Estratégico de Emergencias y Catástrofes Nacionales. Plataforma de coordinación y respuesta unificada.",
     result: "Centralización de inteligencia para la toma de decisiones estratégicas.",
     href: "https://ceecna.cl",
+    imageSrc: "",
     
   },
   {
@@ -79,6 +89,7 @@ export const caseStudies = [
       "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
     result: "Digitalización de activos y optimización del mantenimiento.",
     href: "",
+    imageSrc: "",
   },
   {
     title: "(En Proceso)",
@@ -87,6 +98,7 @@ export const caseStudies = [
       "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo y conectar directamente con su audiencia en un entorno privado.",
     result: "Infraestructura de alta concurrencia para streaming y pagos seguros.",
     href: "#",
+    imageSrc: "",
   },
 ];
 

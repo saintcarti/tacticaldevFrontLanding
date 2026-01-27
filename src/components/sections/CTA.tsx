@@ -1,6 +1,49 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
 import Reveal from "@/components/ui/Reveal";
 
 export default function CTA() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle"
+  );
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("loading");
+    setFeedback("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      email: String(formData.get("email") ?? ""),
+      description: String(formData.get("description") ?? ""),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const data = (await response.json()) as { error?: string };
+        throw new Error(data.error ?? "No se pudo enviar el mensaje.");
+      }
+
+      form.reset();
+      setStatus("success");
+      setFeedback("Gracias, recibimos tu mensaje.");
+    } catch (error) {
+      setStatus("error");
+      setFeedback(
+        error instanceof Error ? error.message : "No se pudo enviar el mensaje."
+      );
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -31,7 +74,10 @@ export default function CTA() {
           </Reveal>
 
           <Reveal className="opacity-0 translate-y-6 transition duration-700 ease-out delay-100 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
-            <form className="space-y-5 rounded-[var(--radius-card)] border border-line/60 bg-ink/5 p-6 text-ink/80">
+            <form
+              className="space-y-5 rounded-[var(--radius-card)] border border-line/60 bg-ink/5 p-6 text-ink/80"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label className="text-sm font-semibold text-ink" htmlFor="cta-email">
                   Correo
@@ -60,10 +106,20 @@ export default function CTA() {
               </div>
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-brand transition hover:bg-brand-2"
+                className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-brand transition hover:bg-brand-2 disabled:cursor-not-allowed disabled:opacity-70"
+                disabled={status === "loading"}
               >
-                Enviar
+                {status === "loading" ? "Enviando..." : "Enviar"}
               </button>
+              {feedback ? (
+                <p
+                  className={`text-sm ${
+                    status === "success" ? "text-emerald-500" : "text-rose-500"
+                  }`}
+                >
+                  {feedback}
+                </p>
+              ) : null}
             </form>
           </Reveal>
         </div>

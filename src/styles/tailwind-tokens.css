@@ -84,7 +84,7 @@
   --color-line: var(--td-line);
   --color-line-soft: var(--td-line-soft);
   --color-on-brand: var(--td-on-brand);
-  --radius-card: 1.25rem;
+  --radius-card: 1.5rem;
   --shadow-soft: var(--td-shadow-soft);
   --shadow-card: var(--td-shadow-card);
 }

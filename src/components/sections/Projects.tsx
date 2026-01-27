@@ -35,6 +35,16 @@ export default function Projects() {
                   {/* Decorative gradient blob on hover */}
                   <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand/20 blur-2xl transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
 
+                  {study.imageSrc && (
+                    <div className="relative z-10 h-48 w-full overflow-hidden">
+                      <img
+                        src={study.imageSrc}
+                        alt={study.title}
+                        className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+
                   <div className="relative z-10 space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand-2 ring-1 ring-inset ring-brand/20">
