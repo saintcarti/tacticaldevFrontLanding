@@ -58,7 +58,7 @@ export default function CTA() {
       <div className="relative mx-auto w-full max-w-6xl px-6 py-20">
         <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
           <Reveal className="opacity-0 translate-y-6 scale-[0.98] transition duration-700 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 [&.is-visible]:scale-100">
-            <div className="rounded-[var(--radius-card)] border border-line/60 bg-surface-3/80 px-7 py-10 shadow-[var(--td-card-shadow)] md:translate-x-[-0.25rem]">
+            <div className="rounded-[var(--radius-card)] border border-line bg-surface-3/80 px-7 py-10 shadow-[var(--td-card-shadow)] md:translate-x-[-0.25rem]">
               <div className="mb-4 h-1 w-16 overflow-hidden rounded-full">
                 <span className="block h-full w-full bg-accent" />
               </div>
@@ -75,7 +75,7 @@ export default function CTA() {
 
           <Reveal className="opacity-0 translate-y-6 transition duration-700 ease-out delay-100 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
             <form
-              className="space-y-5 rounded-[var(--radius-card)] border border-line/60 bg-ink/5 p-6 text-ink/80"
+              className="space-y-5 rounded-[var(--radius-card)] border border-line bg-ink/5 p-6 text-ink/80"
               onSubmit={handleSubmit}
             >
               <div>
@@ -88,7 +88,7 @@ export default function CTA() {
                   type="email"
                   required
                   placeholder="tu@email.com"
-                  className="mt-2 w-full rounded-xl border border-line/60 bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-accent/80"
+                  className="mt-2 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-accent/80"
                 />
               </div>
               <div>
@@ -101,7 +101,7 @@ export default function CTA() {
                   required
                   rows={4}
                   placeholder="Cuéntanos sobre tu plataforma web y objetivos."
-                  className="mt-2 w-full resize-none rounded-xl border border-line/60 bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-accent/80"
+                  className="mt-2 w-full resize-none rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-accent/80"
                 />
               </div>
               <button
@@ -127,5 +127,3 @@ export default function CTA() {
     </section>
   );
 }
-
-

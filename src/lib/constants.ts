@@ -173,6 +173,6 @@ export const footerColumns = [
 ];export const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com" },
   { label: "Instagram", href: "https://www.instagram.com" },
-  { label: "Twitter", href: "https://x.com" },
+  { label: "Twitter", href: "https://x.com/tacticaldevspa?s=20" },
   { label: "TikTok", href: "https://www.tiktok.com" },
 ];

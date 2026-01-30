@@ -1,9 +1,13 @@
-﻿import SectionTitle from "@/components/ui/SectionTitle";
+﻿"use client";
+import { useState } from "react";
+import SectionTitle from "@/components/ui/SectionTitle";;
 import Card from "@/components/ui/Card";
 import Reveal from "@/components/ui/Reveal";
 import { servicePillars } from "@/lib/constants";
 
 export default function Services() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   return (
     <section
       id="services"
@@ -14,7 +18,7 @@ export default function Services() {
       <div className="absolute inset-0 bg-grid opacity-[0.03]" />
 
       {/* Decorative Code Background */}
-      <div className="pointer-events-none absolute left-0 top-20 -z-10 hidden select-none font-mono text-sm leading-relaxed text-ink/10 opacity-[0.05] lg:block">
+      <div className="pointer-events-none absolute left-0 top-20 -z-10 hidden select-none font-mono text-sm leading-relaxed text-ink/20 opacity-30 lg:block">
         <pre>{`
 class DigitalTransformation {
   constructor(vision) {
@@ -42,21 +46,29 @@ class DigitalTransformation {
             description="Desde la concepción hasta el despliegue, cubrimos todo el ciclo de vida del desarrollo de software moderno con un enfoque en calidad y escalabilidad."
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
-            {servicePillars.map((pillar, index) => (
+            {servicePillars.map((pillar, index) => {
+              const isActive = activeIndex === index;
+              return (
               <Reveal
                 key={pillar.title}
                 className={`mobile-stagger mobile-stagger-${index + 1}`}
               >
-                <Card className="group relative h-full space-y-4 overflow-hidden border border-line/60 bg-ink/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand/10 hover:bg-ink/10">
+                <div
+                  onClick={() => setActiveIndex(isActive ? null : index)}
+                  className="h-full cursor-pointer"
+                >
+                <Card 
+                  className={`group relative h-full space-y-4 overflow-hidden border border-line bg-ink/5 transition-all duration-300 ${isActive ? "-translate-y-2 shadow-xl shadow-brand/10 bg-ink/10" : "hover:-translate-y-2 hover:shadow-xl hover:shadow-brand/10 hover:bg-ink/10"}`}
+                >
                   {/* Hover decoration */}
-                  <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-brand/10 transition-transform duration-500 group-hover:scale-150" />
+                  <div className={`absolute -right-4 -top-4 h-24 w-24 rounded-full bg-brand/10 transition-transform duration-500 ${isActive ? "scale-150" : "group-hover:scale-150"}`} />
 
-                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-ink/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                  <div className={`relative flex h-12 w-12 items-center justify-center rounded-xl bg-ink/10 text-brand transition-colors duration-300 ${isActive ? "bg-brand text-white" : "group-hover:bg-brand group-hover:text-white"}`}>
                     {getIconForService(pillar.title)}
                   </div>
 
                   <div className="relative space-y-2">
-                    <h3 className="text-lg font-bold text-ink transition-colors group-hover:text-brand">
+                    <h3 className={`text-lg font-bold text-ink transition-colors ${isActive ? "text-brand" : "group-hover:text-brand"}`}>
                       {pillar.title}
                     </h3>
                     <p className="text-justify text-sm leading-relaxed text-ink/60">
@@ -65,16 +77,21 @@ class DigitalTransformation {
                   </div>
 
                   <div className="relative pt-2">
-                    <span className="inline-block rounded-md bg-ink/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-ink/70 transition-colors group-hover:bg-brand/20 group-hover:text-brand">
+                    <span className={`inline-block rounded-md bg-ink/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-ink/70 transition-colors ${isActive ? "bg-brand/20 text-brand" : "group-hover:bg-brand/20 group-hover:text-brand"}`}>
                       {pillar.tag}
                     </span>
                   </div>
                 </Card>
+                </div>
               </Reveal>
-            ))}
+            );
+            })}
           </div>
         </div>
       </Reveal>
+
+      {/* Separator line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ink/20 to-transparent" />
     </section>
   );
 }

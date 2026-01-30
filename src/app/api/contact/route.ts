@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
     const { email, description } = (await request.json()) as {
@@ -29,6 +27,8 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const subject = "Nuevo contacto desde TacticalDev";
     const text = `Correo: ${sanitizedEmail}\n\nMensaje:\n${sanitizedDescription}`;
