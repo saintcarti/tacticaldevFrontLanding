@@ -13,7 +13,7 @@ export default function About() {
       className="relative flex min-h-screen items-center overflow-hidden bg-surface py-20 text-ink"
     >
       {/* Background Effects */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[color:var(--td-spot-1)] via-surface to-surface" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[color:var(--td-spot-1)]/30 via-surface to-surface dark:from-[color:var(--td-spot-1)]" />
       <div className="absolute inset-0 bg-grid opacity-[0.03]" />
 
       {/* Decorative Code Background */}

@@ -50,7 +50,7 @@ export default function Hero() {
         style={{ y: curtainY, scaleY: curtainScale, opacity: curtainOpacity }}
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[color:var(--td-hero-from)] via-[color:var(--td-hero-via)] to-[color:var(--td-hero-to)]"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[color:var(--td-hero-from)] via-[color:var(--td-hero-via)] to-[color:var(--td-hero-to)] opacity-80 dark:opacity-100"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-grid opacity-5" />

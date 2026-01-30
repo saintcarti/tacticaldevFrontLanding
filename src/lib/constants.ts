@@ -171,8 +171,8 @@ export const footerColumns = [
     links: ["Santiago de Chile", "8300000"],
   },
 ];export const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com" },
-  { label: "Instagram", href: "https://www.instagram.com" },
+  //{ label: "LinkedIn", href: "https://www.linkedin.com" },
+  //{ label: "Instagram", href: "https://www.instagram.com" },
   { label: "Twitter", href: "https://x.com/tacticaldevspa?s=20" },
-  { label: "TikTok", href: "https://www.tiktok.com" },
+  //{ label: "TikTok", href: "https://www.tiktok.com" },
 ];
