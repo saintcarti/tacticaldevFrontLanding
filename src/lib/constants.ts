@@ -164,7 +164,7 @@ export const footerColumns = [
   },
   {
     title: "Email",
-    links: ["tacticaldev@gmail.com"],
+    links: ["Administración@tacticaldev.cl"],
   },
   {
     title: "Dirección",
