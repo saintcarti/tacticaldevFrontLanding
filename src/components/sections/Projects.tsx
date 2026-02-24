@@ -3,8 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
-import Reveal from "@/components/ui/Reveal";
-import { caseStudies } from "@/lib/constants";
+/*import Reveal from "@/components/ui/Reveal";*/
+
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -29,7 +29,7 @@ async function deploy(project) {
         `}</pre>
       </div>
 
-      <Reveal className="mobile-reveal mobile-delay-2 w-full">
+     {/* <Reveal className="mobile-reveal mobile-delay-2 w-full">
         <div className="mx-auto w-full max-w-6xl space-y-12 px-6 py-0">
           <div className="space-y-6">
             <SectionTitle
@@ -41,6 +41,7 @@ async function deploy(project) {
               Más que entregar código, entregamos valor. Desde la modernización de sistemas legados hasta la exploración de nuevas fronteras tecnológicas, nuestro trabajo se define por la precisión técnica y la adaptabilidad. Así es como transformamos desafíos en activos digitales duraderos.
             </p>
           </div>
+          
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((study, index) => {
               const isActive = activeIndex === index;
@@ -56,7 +57,7 @@ async function deploy(project) {
                 <Card 
                   className={`group relative flex h-full flex-col justify-between overflow-hidden border border-line bg-ink/5 p-6 transition-all duration-500 ${isActive ? "-translate-y-2 border-brand/50 bg-ink/10 shadow-2xl shadow-brand/10" : "hover:-translate-y-2 hover:border-brand/50 hover:bg-ink/10 hover:shadow-2xl hover:shadow-brand/10"}`}
                 >
-                  {/* Decorative gradient blob on hover */}
+                  
                   <div className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand/20 blur-2xl transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
 
                   {study.imageSrc && (
@@ -117,8 +118,10 @@ async function deploy(project) {
             );
             })}
           </div>
+          
         </div>
       </Reveal>
+      */}
 
       {/* Separator line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ink/20 to-transparent" />
