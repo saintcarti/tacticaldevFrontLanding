@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Switch } from "@heroui/switch";
+import { useState } from "react";
 import { navLinks } from "@/lib/constants";
+import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
 
 // Fix: Component defined outside to prevent re-creation on every render
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -18,43 +18,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const SunIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.5}
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M12 3.75v1.5m0 13.5v1.5m8.25-8.25h-1.5m-13.5 0h-1.5m12.02-6.02-1.06 1.06M6.29 17.71l-1.06 1.06m12.02 0-1.06-1.06M6.29 6.29 5.23 5.23M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z"
-    />
-  </svg>
-);
-
-const MoonIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.5}
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"
-    />
-  </svg>
-);
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLightMode, setIsLightMode] = useState(false);
   // Removed unused isScrolled state to fix ESLint warning
 
   const handleAnchorClick = (
@@ -80,20 +45,6 @@ export default function Navbar() {
     window.scrollTo({ top, behavior: "smooth" });
     window.history.replaceState(null, "", href);
     setIsOpen(false);
-  };
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem("td-theme");
-    const theme = storedTheme === "light" ? "light" : "dark";
-    document.documentElement.dataset.theme = theme;
-    setIsLightMode(theme === "light");
-  }, []);
-
-  const handleThemeChange = (value: boolean) => {
-    const theme = value ? "light" : "dark";
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("td-theme", theme);
-    setIsLightMode(value);
   };
 
   return (
@@ -125,26 +76,7 @@ export default function Navbar() {
             ))}
           </nav>
           <div className="hidden items-center gap-4 md:flex">
-            <Switch
-              aria-label={isLightMode ? "Cambiar a modo oscuro" : "Cambiar a modo claro"}
-              isSelected={isLightMode}
-              onValueChange={handleThemeChange}
-              size="sm"
-              startContent={<MoonIcon />}
-              endContent={<SunIcon />}
-              classNames={{
-                base: "group inline-flex items-center",
-                hiddenInput: "sr-only",
-                wrapper:
-                  "relative inline-flex h-7 w-12 items-center rounded-full border border-line/60 bg-ink/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] transition-colors duration-300 ease-out group-data-[selected=true]:bg-brand group-data-[selected=true]:border-brand/70 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-brand/40 group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-surface",
-                thumb:
-                  "absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform duration-300 ease-out group-data-[selected=true]:translate-x-5",
-                startContent:
-                  "absolute left-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/70",
-                endContent:
-                  "absolute right-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/90",
-              }}
-            />
+            <AnimatedThemeToggler className="group relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-line/60 bg-ink/10 text-ink transition-colors hover:bg-ink/20" />
             <Link
               href="https://wa.me/+56991338717"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-on-brand transition hover:bg-[#1fb85a]"
@@ -188,26 +120,7 @@ export default function Navbar() {
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
                 Tema
               </span>
-              <Switch
-                aria-label={isLightMode ? "Cambiar a modo oscuro" : "Cambiar a modo claro"}
-                isSelected={isLightMode}
-                onValueChange={handleThemeChange}
-                size="sm"
-                startContent={<MoonIcon />}
-                endContent={<SunIcon />}
-                classNames={{
-                  base: "group inline-flex items-center",
-                  hiddenInput: "sr-only",
-                  wrapper:
-                    "relative inline-flex h-7 w-12 items-center rounded-full border border-line/60 bg-ink/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] transition-colors duration-300 ease-out group-data-[selected=true]:bg-brand group-data-[selected=true]:border-brand/70 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-brand/40 group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-surface",
-                  thumb:
-                    "absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform duration-300 ease-out group-data-[selected=true]:translate-x-5",
-                  startContent:
-                    "absolute left-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/70",
-                  endContent:
-                    "absolute right-1.5 z-10 h-3.5 w-3.5 text-ink/60 transition-colors group-data-[selected=true]:text-white/90",
-                }}
-              />
+              <AnimatedThemeToggler className="group relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-line/60 bg-ink/10 text-ink transition-colors hover:bg-ink/20" />
             </div>
             <Link
               href="https://wa.me/+56991338717"

@@ -1,6 +1,9 @@
-﻿import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import type { Metadata } from "next";
+import { Manrope, Space_Grotesk, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const displayFont = Space_Grotesk({
   subsets: ["latin"],
@@ -26,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" data-theme="dark">
+    <html lang="es" data-theme="dark" className={cn("font-sans", geist.variable)}>
       <body
         className={`${displayFont.variable} ${bodyFont.variable} min-h-screen bg-sand text-ink antialiased`}
       >

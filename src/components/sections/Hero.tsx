@@ -10,6 +10,7 @@ import {
   useTransform,
 } from "framer-motion";
 import Button from "@/components/ui/Button";
+import { AuroraText } from "@/registry/magicui/aurora-text";
 
 const heroImages = ["/cellphone.png","/imagen2.png","/imagen6.png"].filter(Boolean);
 
@@ -62,8 +63,11 @@ export default function Hero() {
         <div className="space-y-4 md:space-y-20 lg:space-y-2 md:translate-x-4">
           
           <h1 className="hero-reveal hero-reveal--2 mt-2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-ink md:mt-4 md:text-6xl lg:text-7xl">
-            Software Estratégico
-            <span className="block text-accent">Desarrollo</span> Arquitectura
+            <AuroraText>Software</AuroraText> Estratégico
+            <br />
+            <AuroraText>Desarrollo</AuroraText>
+            <br />
+            <span className="text-accent">Arquitectura.</span>
           </h1>
           <p className="hero-reveal hero-reveal--3 max-w-xl text-base text-ink-3 md:text-lg">
             Creamos soluciones empresariales con precisión táctica y excelencia
