@@ -1,41 +1,25 @@
 ﻿"use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useRef } from "react";
 import {
-  AnimatePresence,
-  cubicBezier,
   motion,
   useScroll,
   useTransform,
 } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { AuroraText } from "@/registry/magicui/aurora-text";
-
-const heroImages = ["/cellphone.png","/imagen2.png","/imagen6.png"].filter(Boolean);
+import { Globe } from "@/components/ui/globe";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const easing = cubicBezier(0.5, 0, 0.2, 1);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const curtainY = useTransform(scrollYProgress, (value) => -150 * easing(value));
-  const curtainScale = useTransform(scrollYProgress, (value) => 1 - easing(value));
-  const curtainOpacity = useTransform(scrollYProgress, (value) => 1 - easing(value));
-
-  useEffect(() => {
-    if (heroImages.length === 0) return;
-    const id = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
-
-    return () => window.clearInterval(id);
-  }, []);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
 
   const whatsappHref = "https://wa.me/+56991338717";
 
@@ -43,71 +27,77 @@ export default function Hero() {
     <section
       id="top"
       ref={sectionRef}
-      className="relative z-10 flex min-h-screen items-center overflow-hidden bg-[color:var(--td-hero-bg)]"
+      className="relative z-10 flex min-h-screen items-center overflow-hidden bg-background"
     >
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 origin-top bg-[color:var(--td-hero-bg)]"
-        style={{ y: curtainY, scaleY: curtainScale, opacity: curtainOpacity }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[color:var(--td-hero-from)] via-[color:var(--td-hero-via)] to-[color:var(--td-hero-to)] opacity-80 dark:opacity-100"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 bg-grid opacity-5" />
-      <div
-        className="bg-orb pointer-events-none absolute right-0 top-1/2 h-56 w-56 opacity-60 md:h-72 md:w-72 lg:h-96 lg:w-96"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto grid w-full max-w-5xl gap-10 px-6 pb-20 pt-32 md:mt-12 md:grid-cols-[1.6fr_1fr]">
-        <div className="space-y-4 md:space-y-20 lg:space-y-2 md:translate-x-4">
-          
-          <h1 className="hero-reveal hero-reveal--2 mt-2 text-balance text-5xl font-extrabold leading-tight tracking-tight text-ink md:mt-4 md:text-6xl lg:text-7xl">
-            <AuroraText>Software</AuroraText> Estratégico
-            <br />
-            <AuroraText>Desarrollo</AuroraText>
-            <br />
-            <span className="text-accent">Arquitectura.</span>
-          </h1>
-          <p className="hero-reveal hero-reveal--3 max-w-xl text-base text-ink-3 md:text-lg">
-            Creamos soluciones empresariales con precisión táctica y excelencia
-            arquitectónica. Conectamos lógica de negocio compleja con ejecución
-            técnica escalable y confiable.
-          </p>
-          <div className="hero-reveal hero-reveal--4 flex flex-wrap gap-3">
-            <Button href={whatsappHref}>Contáctanos</Button>
-          </div>
-          <div className="hero-reveal hero-reveal--5 flex flex-wrap gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-ink-3">
-           
-          </div>
-        </div>
-        <div className="relative flex items-center justify-center md:justify-end">
-            <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-brand/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-12 -right-10 h-48 w-48 rounded-full bg-brand-2/25 blur-3xl" />
-            <AnimatePresence mode="wait">
-              {heroImages[activeIndex] ? (
-                <motion.div
-                  key={heroImages[activeIndex]}
-                  initial={{ opacity: 0, y: -24, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 24, scale: 0.98 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative flex w-full items-center justify-center translate-x-6 md:translate-x-12"
-                >
-                  <Image
-                    src={heroImages[activeIndex]}
-                    alt="Vista de producto TacticalDev"
-                    width={520}
-                    height={520}
-                    className="h-[20rem] w-[20rem] max-w-none object-contain md:h-[30rem] md:w-[30rem] lg:h-[40rem] lg:w-[40rem]"
-                    priority
-                  />
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
-        </div>
+      {/* Cinematic Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-blue-600/10 dark:bg-blue-600/20 blur-[120px]" />
+        <div className="absolute top-[20%] -right-[10%] h-[50%] w-[50%] rounded-full bg-purple-600/10 dark:bg-purple-600/20 blur-[140px]" />
+      </div>
+
+      <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05]" />
       
+      <motion.div 
+        style={{ opacity, scale }}
+        className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 pb-20 pt-32 md:grid-cols-[1.2fr_1fr] items-center"
+      >
+        <div className="flex flex-col space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h1 className="text-balance text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-7xl lg:text-8xl">
+              Creamos <AuroraText>Productos</AuroraText> <br />
+              Digitales Premium
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="max-w-xl text-lg text-muted-foreground md:text-xl leading-relaxed"
+          >
+            TacticalDev es una agencia de desarrollo de software de élite especializada en 
+            soluciones digitales de alto rendimiento con ingeniería de precisión y 
+            diseño de clase mundial.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-wrap gap-4"
+          >
+            <Button 
+              href={whatsappHref}
+              className="group relative overflow-hidden bg-blue-600 px-8 py-4 text-white transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] border-none"
+            >
+              <span className="relative z-10 font-semibold text-lg">Iniciar Proyecto</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </Button>
+            
+            <button className="group relative flex items-center justify-center rounded-full border border-border bg-foreground/5 px-8 py-4 text-lg font-medium text-foreground transition-all hover:bg-foreground/10 hover:shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+              Ver Trabajo
+            </button>
+          </motion.div>
+        </div>
+
+        <div className="relative h-[400px] w-full md:h-[600px] lg:h-[800px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-full w-full"
+          >
+            <Globe className="top-0" />
+          </motion.div>
+          
+          {/* Subtle light leaks around globe */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.1),transparent_70%)]" />
+        </div>
+      </motion.div>
     </section>
   );
 }

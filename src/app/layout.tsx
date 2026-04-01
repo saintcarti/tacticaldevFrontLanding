@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="es" data-theme="dark" className={cn("font-sans", geist.variable)}>
       <body
-        className={`${displayFont.variable} ${bodyFont.variable} min-h-screen bg-sand text-ink antialiased`}
+        className={`${displayFont.variable} ${bodyFont.variable} min-h-screen bg-background text-foreground antialiased`}
       >
         {children}
       </body>

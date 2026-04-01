@@ -12,14 +12,14 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex min-h-screen items-center overflow-hidden bg-surface py-20 text-ink"
+      className="relative flex min-h-screen items-center overflow-hidden bg-background py-20 text-foreground transition-colors duration-300"
     >
       {/* Background Effects */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-[color:var(--td-spot-1)]/30 via-surface to-surface dark:from-[color:var(--td-spot-1)]" />
-      <div className="absolute inset-0 bg-grid opacity-[0.03]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/10 via-background to-background dark:from-blue-500/20" />
+      <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05]" />
 
       {/* Decorative Code Background */}
-      <div className="pointer-events-none absolute right-0 top-20 -z-10 hidden select-none font-mono text-xs leading-relaxed text-ink/20 opacity-30 lg:block text-right">
+      <div className="pointer-events-none absolute right-0 top-20 -z-10 hidden select-none font-mono text-xs leading-relaxed text-foreground/10 opacity-30 lg:block text-right">
         <pre>{`
 async function deploy(project) {
   await build(project);

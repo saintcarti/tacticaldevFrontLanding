@@ -28,7 +28,7 @@ const socialIcons: Record<string, ReactNode> = {
 
 export default function Footer() {
   return (
-    <footer className="bg-sand text-ink">
+    <footer className="bg-background text-foreground border-t border-border transition-colors duration-300">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-13 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
         <div className="space-y-2">
           <div className="flex items-center">

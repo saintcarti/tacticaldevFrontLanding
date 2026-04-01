@@ -1,143 +1,231 @@
 "use client";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
-import Reveal from "@/components/ui/Reveal";
-import { techStack } from "@/lib/constants";
+import { 
+  Server, 
+  Activity, 
+  Layout, 
+  Cpu, 
+  Database as DbIcon,
+  Network,
+  Plus
+} from "lucide-react";
+
+// Importación mixta para evitar errores de exportación en 'si'
+import { 
+  SiGo, 
+  SiNodedotjs, 
+  SiKubernetes, 
+  SiTerraform, 
+  SiPostgresql,
+  SiApachekafka,
+  SiSnowflake,
+  SiDatadog,
+  SiPrometheus,
+  SiGrafana,
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiFigma,
+  SiStorybook,
+  SiCypress
+} from "react-icons/si";
+
+import { FaAws } from "react-icons/fa"; // Usando FontAwesome para AWS como alternativa segura
+import { VscAzure } from "react-icons/vsc"; // Usando VS Code icons para Azure como alternativa segura
+
+// Componente para Logotipos Premium con Color Hover Glow
+const TechLogo = ({ name, icon: Icon, color, isHovered }: { name: string, icon: any, color: string, isHovered: boolean }) => (
+  <motion.div 
+    whileHover={{ scale: 1.05, y: -2 }}
+    className={`group/logo relative flex flex-col items-center justify-center p-4 rounded-2xl border transition-all duration-500 
+      ${isHovered 
+        ? 'border-line-soft bg-surface-3 shadow-lg' 
+        : 'border-transparent bg-transparent'} 
+      hover:!border-white/10 hover:!bg-white/5 hover:!shadow-2xl z-10 overflow-hidden`}
+  >
+    {/* Resplandor de color dinámico al hacer hover en el logo individual */}
+    <div 
+      className="absolute inset-0 blur-xl opacity-0 group-hover/logo:opacity-20 transition-opacity duration-500 pointer-events-none" 
+      style={{ backgroundColor: color }} 
+    />
+    
+    <div 
+      className="w-10 h-10 flex items-center justify-center relative mb-3 transition-colors duration-500 text-ink-3 group-hover/logo:!text-current"
+      style={{ color: isHovered ? color : undefined }}
+    >
+      <div className="relative z-10 w-full h-full flex items-center justify-center text-3xl filter transition-all duration-500 group-hover/logo:drop-shadow-[0_0_8px_currentColor]">
+        {Icon && <Icon />}
+      </div>
+    </div>
+    <span className="text-[10px] font-mono font-bold text-ink-3/50 group-hover/logo:text-ink-3 transition-colors duration-300 uppercase tracking-widest text-center">{name}</span>
+  </motion.div>
+);
+
+const SystemMetrics = () => (
+  <div className="absolute top-6 right-8 flex flex-col gap-1 text-[8px] font-mono text-cyan-500/40">
+    <div className="flex items-center gap-2">
+      <div className="w-8 h-1 bg-line-soft rounded-full overflow-hidden">
+        <motion.div animate={{ width: ["20%", "60%", "45%"] }} transition={{ duration: 4, repeat: Infinity }} className="h-full bg-cyan-500/50" />
+      </div>
+      <span>SYS.LOAD 42%</span>
+    </div>
+  </div>
+);
 
 export default function TechStack() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const categories = [
+    {
+      id: "01",
+      title: "BACKEND & INFRA",
+      items: [
+        { name: "Go", icon: SiGo, color: "#00ADD8" },
+        { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+        { name: "K8s", icon: SiKubernetes, color: "#326CE5" },
+        { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
+        { name: "AWS", icon: FaAws, color: "#FF9900" },
+        { name: "Azure", icon: VscAzure, color: "#0078D4" }
+      ],
+      code: "kubectl apply -f cluster.yaml",
+      icon: <Server size={22} />
+    },
+    {
+      id: "02",
+      title: "DATA & OBSERVABILIDAD",
+      items: [
+        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+        { name: "Kafka", icon: SiApachekafka, color: "#FFFFFF" },
+        { name: "Snowflake", icon: SiSnowflake, color: "#29B5E8" },
+        { name: "Datadog", icon: SiDatadog, color: "#632CA6" },
+        { name: "Prom", icon: SiPrometheus, color: "#E6522C" },
+        { name: "Grafana", icon: SiGrafana, color: "#F46800" }
+      ],
+      code: "SELECT * FROM insights",
+      icon: <DbIcon size={22} />,
+      extra: true
+    },
+    {
+      id: "03",
+      title: "FRONTEND & PRODUCTO",
+      items: [
+        { name: "React", icon: SiReact, color: "#61DAFB" },
+        { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+        { name: "TS", icon: SiTypescript, color: "#3178C6" },
+        { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+        { name: "Storybook", icon: SiStorybook, color: "#FF4785" },
+        { name: "Cypress", icon: SiCypress, color: "#17202C" }
+      ],
+      code: "<Component />",
+      icon: <Layout size={22} />
+    }
+  ];
 
   return (
-    <section
-      id="stack"
-      className="relative flex min-h-screen items-center overflow-hidden bg-surface py-24 text-ink"
-    >
-      {/* --- BACKGROUND LAYERS --- */}
-      
-      {/* 1. Technical Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(var(--ink-rgb),0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(var(--ink-rgb),0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_100%,transparent,var(--surface))]" />
+    <section id="stack" className="relative flex min-h-screen items-center overflow-hidden py-32 text-foreground">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none" />
 
-      {/* 2. Cyberpunk/Tech Glows */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] w-[800px] rounded-full bg-brand/3 blur-[120px]" />
+      <div className="mx-auto w-full max-w-7xl px-6 relative z-10">
+        <div className="mb-24 text-center">
+          <SectionTitle
+            eyebrow="ARQUITECTURA"
+            title="Stack tecnológico"
+            description="Herramientas empresariales organizadas en clústeres especializados para rendimiento y seguridad."
+            align="center"
+          />
+        </div>
 
-      {/* --- DECORATIVE ELEMENTS --- */}
-      
-      {/* Right Decoration: JSON Config */}
-      <div className="pointer-events-none absolute right-10 bottom-20 -z-10 hidden select-none font-mono text-[10px] leading-relaxed text-brand/20 opacity-50 lg:block text-right">
-         <pre>{`{
-  "environment": "production",
-  "scaling": "auto",
-  "security": "strict",
-  "modules": [
-    "core",
-    "analytics",
-    "payment"
-  ]
-}`}</pre>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+          {categories.map((cat, index) => {
+            const isHovered = hoveredIndex === index;
+            const gridClasses = [
+              "md:col-span-3 lg:col-span-5 lg:row-span-2",
+              "md:col-span-3 lg:col-span-7 lg:row-span-1",
+              "md:col-span-6 lg:col-span-7 lg:row-span-1",
+            ][index];
 
-      {/* --- MAIN CONTENT --- */}
-
-      <Reveal className="mobile-reveal mobile-delay-4 w-full relative z-10">
-        <div className="mx-auto w-full max-w-7xl px-6">
-          
-          <div className="mb-20">
-            <SectionTitle
-              eyebrow="Arquitectura"
-              title="Stack tecnológico"
-              description="Selección estratégica de herramientas para garantizar rendimiento, escalabilidad y seguridad a largo plazo."
-              align="center"
-            />
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
-            {techStack.map((group, index) => {
-              const isActive = activeIndex === index;
-              return (
-              <Reveal
-                key={group.title}
-                className={`mobile-stagger mobile-stagger-${index + 1} h-full`}
+            return (
+              <motion.div
+                key={cat.title}
+                className={`${gridClasses} relative group`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Tech Card */}
-                <div
-                  onClick={() => setActiveIndex(isActive ? null : index)}
-                  className={`group relative h-full overflow-hidden rounded-xl border border-line/60 bg-surface/40 p-1 backdrop-blur-sm transition-all duration-500 cursor-pointer ${
-                    isActive ? "-translate-y-1 border-brand/40 bg-surface/80 shadow-2xl shadow-brand/5" : "hover:-translate-y-1 hover:border-brand/40 hover:bg-surface/80 hover:shadow-2xl hover:shadow-brand/5"
-                  }`}
+                {/* Floating Data Streams Background effect (visible on hover) */}
+                <div className={`absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] pointer-events-none transition-opacity duration-1000 ${isHovered ? 'opacity-[0.04]' : ''}`} />
+                
+                {/* Gradient Outer Border Glow */}
+                <div className={`absolute -inset-[1px] rounded-[2.5rem] bg-gradient-to-br from-cyan-500/40 via-transparent to-purple-500/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[1px] z-0`} />
+                
+                {/* Main Bento Container with Beveled Edges & Micro-Internal Glow */}
+                <div className={`relative h-full w-full overflow-hidden rounded-[2.5rem] border border-line-soft bg-surface/50 backdrop-blur-3xl p-10 flex flex-col justify-between transition-all duration-500 z-10
+                  shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
+                  dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
+                  ${isHovered ? '-translate-y-2 border-cyan-500/30 shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40px_rgba(6,182,212,0.1)]' : ''}`}
                 >
+                  <SystemMetrics />
                   
-                  {/* Decorative corner accent */}
-                  <div className={`absolute top-0 right-0 h-8 w-8 bg-gradient-to-bl from-line/30 to-transparent transition-all ${isActive ? "from-brand/20" : "group-hover:from-brand/20"}`} />
-
-                  <div className="flex h-full flex-col rounded-lg bg-surface/30 p-6">
-                    
-                    {/* Header: Terminal Style */}
-                    <div className="mb-6 flex items-center justify-between border-b border-line/40 pb-4">
-                      <div className="flex items-center gap-3">
-                        {/* Glowing Dot */}
-                        <div className="relative flex h-3 w-3 items-center justify-center">
-                          <span className={`absolute inline-flex h-full w-full animate-ping rounded-full bg-brand/40 opacity-0 ${isActive ? "opacity-100" : "group-hover:opacity-100"}`} />
-                          <span className={`relative inline-flex h-2 w-2 rounded-full bg-line transition-colors duration-300 ${isActive ? "bg-brand" : "group-hover:bg-brand"}`} />
-                        </div>
-                        <h3 className={`font-mono text-sm font-bold tracking-wider text-ink uppercase transition-colors ${isActive ? "text-brand" : "group-hover:text-brand"}`}>
-                          {group.title}
-                        </h3>
-                      </div>
-                      {/* Decorative ID */}
-                      <span className="font-mono text-[10px] text-ink/30">
-                        0{index + 1}
-                      </span>
+                  {/* Header */}
+                  <div className="flex items-center gap-5 relative z-20 mb-8">
+                    <div className={`p-4 rounded-3xl bg-surface-2 border border-line-soft transition-all duration-500 ${isHovered ? 'bg-cyan-500/10 border-cyan-500/50 text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.3)] scale-105' : 'text-ink-3'}`}>
+                      {cat.icon}
                     </div>
-
-                    {/* Content: Chips Grid */}
-                    <div className="flex flex-wrap content-start gap-2">
-                      {group.items.map((item) => (
-                        <div
-                          key={item}
-                          className={`relative overflow-hidden rounded border border-line/40 bg-surface px-3 py-2 transition-all duration-300 ${isActive ? "border-brand/20 bg-brand/5" : "group-hover:border-brand/20 group-hover:bg-brand/5"}`}
-                        >
-                          <div className="flex items-center gap-2">
-                            {/* Tiny tech indicator */}
-                            <div className={`h-1 w-1 rounded-full bg-ink/20 ${isActive ? "bg-brand/40" : "group-hover:bg-brand/40"}`} />
-                            <span className={`font-mono text-xs font-medium text-ink/70 transition-colors ${isActive ? "text-ink" : "group-hover:text-ink"}`}>
-                              {item}
-                            </span>
-                          </div>
-                          
-                          {/* Subtle shine effect on hover */}
-                          <div className={`absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 ${isActive ? "translate-x-full" : "group-hover:translate-x-full"}`} />
-                        </div>
-                      ))}
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-mono tracking-[0.4em] text-ink-3 uppercase font-bold transition-colors duration-300 group-hover:text-cyan-500/80">Clúster {cat.id}</span>
+                      <h3 className="text-2xl font-black tracking-tighter text-ink uppercase">{cat.title}</h3>
                     </div>
+                  </div>
+                  
+                  {/* Pristine Grid of Logos */}
+                  <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-3 relative z-20 bg-surface-2/30 p-4 rounded-[1.5rem] border border-line-soft/50">
+                    {cat.items.map((tech) => (
+                      <TechLogo key={tech.name} name={tech.name} icon={tech.icon} color={tech.color} isHovered={isHovered} />
+                    ))}
+                  </div>
 
-                    {/* Footer decoration: Terminal Cursor */}
-                    {/* CORREGIDO: Usamos inline-block o div para que el cursor tenga tamaño */}
-                    <div className={`mt-auto pt-6 transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
-                        <div className="flex items-center font-mono text-[10px]">
-                            {/* Prompt symbol */}
-                            <span className="mr-2 text-brand font-bold">{`>`}</span>
-                            
-                            {/* Static text */}
-                            <span className="text-ink/50 mr-1">por agregar</span>
-                            
-                            {/* Blinking Cursor (CORREGIDO) */}
-                            {/* 'inline-block' es clave para que el width/height funcionen en un span */}
-                            <span className="inline-block h-3 w-1.5 bg-brand animate-pulse align-middle" />
+                  {/* Footer / Streams */}
+                  <div className="mt-8 flex items-center justify-between border-t border-line-soft pt-6 relative z-20">
+                    <div className="flex flex-col gap-1">
+                      <span className="font-mono text-[9px] text-cyan-500/70 uppercase tracking-widest">{cat.code}</span>
+                      {cat.extra ? (
+                        <div className="flex items-center gap-2 text-[9px] font-mono text-ink-3">
+                          <Plus size={8} /> <span>STREAMING DATA...</span>
+                          <span className="text-cyan-500 animate-pulse font-bold">{`> conectando`}</span>
                         </div>
+                      ) : index !== 2 && (
+                        <div className="flex items-center gap-2 text-[9px] font-mono text-ink-3">
+                          <Plus size={8} /> <span>MÓDULOS ACTIVOS</span>
+                        </div>
+                      )}
                     </div>
+                    <AnimatePresence>
+                      {isHovered && (
+                        <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 text-[10px] font-black text-cyan-400 tracking-tighter uppercase">
+                          ONLINE <Activity size={12} className="animate-pulse" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
 
+                  {/* Ambient Glow */}
+                  <div className={`absolute -right-10 bottom-10 opacity-[0.02] dark:opacity-[0.05] transition-opacity duration-700 pointer-events-none transform rotate-12 ${isHovered ? 'opacity-10 dark:opacity-20' : ''}`}>
+                    {index === 0 && <Cpu size={280} strokeWidth={0.5} className="text-cyan-500" />}
+                    {index === 1 && <Network size={280} strokeWidth={0.5} className="text-purple-500" />}
+                    {index === 2 && <Layout size={280} strokeWidth={0.5} className="text-blue-500" />}
                   </div>
                 </div>
-              </Reveal>
+              </motion.div>
             );
-            })}
-          </div>
+          })}
         </div>
-      </Reveal>
-
-      {/* Technical Footer Lines */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ink/20 to-transparent" />
+      </div>
     </section>
   );
 }

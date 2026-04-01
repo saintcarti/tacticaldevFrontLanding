@@ -1,121 +1,121 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
-import Reveal from "@/components/ui/Reveal";
 import { methodologySteps } from "@/lib/constants";
+import { 
+  Search, 
+  Layers, 
+  Cpu, 
+  ShieldCheck, 
+  Rocket,
+  ArrowRight
+} from "lucide-react";
+
+const stepIcons = [
+  <Search key="01" className="w-6 h-6" />,
+  <Layers key="02" className="w-6 h-6" />,
+  <Cpu key="03" className="w-6 h-6" />,
+  <ShieldCheck key="04" className="w-6 h-6" />,
+  <Rocket key="05" className="w-6 h-6" />,
+];
 
 export default function Methodology() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section
       id="process"
-      className="relative flex min-h-screen items-center overflow-hidden bg-surface py-24 text-ink"
+      className="relative flex min-h-screen items-center overflow-hidden py-32 text-foreground"
     >
       {/* --- BACKGROUND LAYERS --- */}
-      
-      {/* 1. Technical Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(var(--ink-rgb),0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(var(--ink-rgb),0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      
-      {/* 2. Soft Gradient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_50%,transparent,var(--surface))]" />
+      <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none" />
 
-      {/* 3. Ambient Light */}
-      <div className="pointer-events-none absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-brand/5 blur-[100px]" />
-      <div className="pointer-events-none absolute -right-40 bottom-0 h-[600px] w-[600px] rounded-full bg-brand-2/5 blur-[100px]" />
+      <div className="mx-auto w-full max-w-7xl px-6 relative z-10">
+        <div className="mb-24 text-center">
+          <SectionTitle
+            eyebrow="NUESTRO ENFOQUE"
+            title="Ingeniería de Procesos"
+            description="Transformamos la complejidad en un sistema predecible y escalable."
+            align="center"
+          />
+        </div>
 
-      {/* --- CONTENT --- */}
-      
-      <Reveal className="mobile-reveal mobile-delay-3 relative w-full z-10">
-        <div className="mx-auto w-full max-w-7xl px-6">
-          
-          <div className="mb-24">
-            <SectionTitle
-              eyebrow="Nuestro enfoque"
-              title="Ingeniería de procesos"
-              description="Transformamos la complejidad en un sistema predecible y escalable."
-              align="center"
-            />
-          </div>
+        {/* Bento Grid Asimétrico (Restaurado) */}
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[14rem]">
+          {methodologySteps.map((step, index) => {
+            const isHovered = hoveredIndex === index;
+            
+            // Lógica de layout para estilo Bento asimétrico
+            const gridClasses = [
+              "md:col-span-3 lg:col-span-4 lg:row-span-2", // 01 tall
+              "md:col-span-3 lg:col-span-4 lg:row-span-1", // 02 square
+              "md:col-span-3 lg:col-span-4 lg:row-span-2", // 03 tall
+              "md:col-span-3 lg:col-span-4 lg:row-span-1", // 04 square
+              "md:col-span-6 lg:col-span-8 lg:row-span-1", // 05 wide
+            ][index];
 
-          <div className="relative isolate">
-            {/* Connecting Line (Ahora MÁS OSCURA y VISIBLE) */}
-            <div className="absolute left-0 top-10 -z-10 hidden w-full md:block">
-               {/* CAMBIO 1: Línea base más oscura (bg-ink/20 en vez de bg-line) */}
-               <div className="h-px w-full bg-ink/20" />
-               
-               {/* CAMBIO 2: Gradiente más intenso y sin blur para que se defina mejor */}
-               <div className="absolute top-0 h-px w-full bg-gradient-to-r from-transparent via-brand to-transparent opacity-100" />
-            </div>
+            return (
+              <motion.div
+                key={step.step}
+                className={`${gridClasses} relative group`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                {/* Neon Micro-light Outer Glow */}
+                <div className={`absolute -inset-[1px] rounded-[2.5rem] bg-gradient-to-br from-cyan-500/40 via-transparent to-purple-500/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[1px] z-0`} />
+                
+                {/* Main Bento Box (Glassmorphism con variables actualizadas) */}
+                <div className={`relative h-full w-full overflow-hidden rounded-[2.5rem] border border-line-soft bg-surface/40 backdrop-blur-3xl p-8 flex flex-col justify-between transition-all duration-500 z-10 
+                  shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
+                  dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
+                  ${isHovered ? '-translate-y-2 border-cyan-500/30 shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40px_rgba(6,182,212,0.1)]' : ''}`}>
+                  
+                  {/* Subtle Grain Texture Overlay */}
+                  <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-            <ol className="grid gap-6 md:grid-cols-5 md:gap-4">
-              {methodologySteps.map((step, index) => {
-                const isActive = activeIndex === index;
-                return (
-                <li
-                  key={step.step}
-                  className="group relative"
-                  onClick={() => setActiveIndex(isActive ? null : index)}
-                >
-                  {/* Card Container */}
-                  <div className={`flex h-full flex-col items-center rounded-2xl border border-ink/10 bg-surface/50 p-6 text-center backdrop-blur-sm transition-all duration-300 cursor-pointer ${isActive ? "border-brand/40 bg-surface shadow-xl shadow-brand/5 -translate-y-2" : "hover:border-brand/40 hover:bg-surface hover:shadow-xl hover:shadow-brand/5 hover:-translate-y-2"}`}>
+                  {/* Header: Backlit Number & Icon */}
+                  <div className="flex items-start justify-between relative">
+                    <div className="relative">
+                      <span className={`text-7xl font-black font-mono tracking-tighter transition-all duration-700 ${isHovered ? 'text-cyan-500/30 dark:text-cyan-400/40 scale-110 blur-[1px]' : 'text-ink-3/10'}`}>
+                        {step.step}
+                      </span>
+                      {/* Backlight effect */}
+                      <div className={`absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-500 opacity-0 blur-2xl transition-opacity duration-700 ${isHovered ? 'opacity-20' : ''}`} />
+                    </div>
                     
-                    {/* Number Node */}
-                    <div className="relative mb-6">
-                      {/* CAMBIO 3: Borde del círculo un poco más oscuro (border-ink/10) */}
-                      <div className={`relative flex h-20 w-20 items-center justify-center rounded-2xl border border-ink/10 bg-surface shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] transition-transform duration-500 ${isActive ? "scale-110 border-brand/30" : "group-hover:scale-110 group-hover:border-brand/30"}`}>
-                        {/* Background color accent */}
-                        <div className={`absolute inset-2 rounded-xl bg-ink/3 transition-colors ${isActive ? "bg-brand/5" : "group-hover:bg-brand/5"}`} />
-                        
-                        <span className={`font-mono text-2xl font-bold text-ink transition-colors ${isActive ? "text-brand" : "group-hover:text-brand"}`}>
-                          {step.step}
-                        </span>
-                      </div>
-                      
-                      {/* Connector dot for the horizontal line - Mobile fallback */}
-                      <div className="absolute top-1/2 -z-10 h-1 w-[200%] -translate-x-1/2 -translate-y-1/2 bg-surface md:hidden" /> 
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col items-center gap-3">
-                      <h3 className={`text-lg font-bold text-ink transition-colors ${isActive ? "text-brand" : "group-hover:text-brand"}`}>
-                        {step.title}
-                      </h3>
-                      
-                      {/* CAMBIO 4: Separador interno más oscuro */}
-                      <div className={`h-px w-8 bg-ink/20 transition-all duration-500 ${isActive ? "w-full bg-brand/50" : "group-hover:w-full group-hover:bg-brand/50"}`} />
-                      
-                      <p className="text-sm leading-relaxed text-ink/70">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    {/* Corner accents */}
-                    <div className={`absolute top-0 right-0 p-3 transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
-                      <div className="h-2 w-2 rounded-full bg-brand/20" />
+                    <div className={`p-4 rounded-2xl bg-surface-2 border border-line-soft transition-all duration-500 ${isHovered ? 'bg-cyan-500 text-white border-cyan-400 shadow-[0_0_30px_rgba(6,182,212,0.4)] scale-110' : 'text-ink-3'}`}>
+                      {stepIcons[index]}
                     </div>
                   </div>
-                </li>
-              );
-              })}
-            </ol>
-          </div>
+
+                  {/* Content */}
+                  <div className="space-y-3 relative">
+                    <h3 className="text-xl font-bold tracking-tight text-ink transition-colors duration-300 group-hover:text-brand">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-ink-3 line-clamp-3">
+                      {step.description}
+                    </p>
+                    
+                    {/* Interaction Hint */}
+                    <div className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-brand transition-all duration-500 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+                      Explorar proceso <ArrowRight className="w-3 h-3" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-      </Reveal>
-      
-      {/* Code Backgrounds */}
-       <div className="pointer-events-none absolute left-4 bottom-10 -z-10 hidden select-none font-mono text-[10px] text-ink/10 lg:block">
-        <pre>{`01001001 01001110 
-01001001 01010100`}</pre>
-      </div>
-      <div className="pointer-events-none absolute right-4 top-20 -z-10 hidden select-none font-mono text-[10px] text-ink/10 lg:block text-right">
-        <pre>{`system.init({
-  mode: 'scale'
-});`}</pre>
       </div>
 
-      {/* Separator line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ink/20 to-transparent" />
+      {/* Decorative Separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-line-soft to-transparent" />
     </section>
   );
 }

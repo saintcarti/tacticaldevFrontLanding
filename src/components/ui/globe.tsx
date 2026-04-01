@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import createGlobe, { type COBEOptions } from "cobe"
 import { useMotionValue, useSpring } from "motion/react"
 
@@ -14,12 +14,12 @@ const GLOBE_CONFIG: COBEOptions = {
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
-  dark: 0,
-  diffuse: 0.4,
+  dark: 1,
+  diffuse: 1.2,
   mapSamples: 16000,
-  mapBrightness: 1.2,
-  baseColor: [1, 1, 1],
-  markerColor: [251 / 255, 100 / 255, 21 / 255],
+  mapBrightness: 6,
+  baseColor: [0.3, 0.3, 0.3],
+  markerColor: [0.1, 0.8, 1],
   glowColor: [1, 1, 1],
   markers: [
     { location: [14.5995, 120.9842], size: 0.03 },
@@ -47,6 +47,7 @@ export function Globe({
   const widthRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
+  const [isDark, setIsDark] = useState(false)
 
   const r = useMotionValue(0)
   const rs = useSpring(r, {
@@ -54,6 +55,26 @@ export function Globe({
     damping: 30,
     stiffness: 100,
   })
+
+  useEffect(() => {
+    // Check initial dark mode
+    const checkDark = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark") || 
+                         document.documentElement.getAttribute("data-theme") === "dark"
+      setIsDark(isDarkMode)
+    }
+
+    checkDark()
+
+    // Observe changes to dark mode
+    const observer = new MutationObserver(checkDark)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"],
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   const updatePointerInteraction = (value: number | null) => {
     pointerInteracting.current = value
@@ -86,6 +107,10 @@ export function Globe({
       ...config,
       width: widthRef.current * 2,
       height: widthRef.current * 2,
+      dark: isDark ? 1 : 0,
+      baseColor: isDark ? [0.3, 0.3, 0.3] : [1, 1, 1],
+      glowColor: isDark ? [1, 1, 1] : [0.8, 0.8, 0.8],
+      mapBrightness: isDark ? 6 : 1.2,
     })
 
     const render = () => {
@@ -99,13 +124,16 @@ export function Globe({
     }
     render()
 
-    setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0)
+    setTimeout(() => {
+        if (canvasRef.current) canvasRef.current.style.opacity = "1"
+    }, 0)
+    
     return () => {
       cancelAnimationFrame(animationFrameId)
       globe.destroy()
       window.removeEventListener("resize", onResize)
     }
-  }, [rs, config])
+  }, [rs, config, isDark])
 
   return (
     <div

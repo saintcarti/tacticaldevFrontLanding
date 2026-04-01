@@ -54,12 +54,12 @@ export default function WhyUs() {
                   className="cursor-pointer"
                 >
                 <Card 
-                  className={`group space-y-3 border border-line bg-surface-2/50 transition-transform duration-300 ease-out ${isActive ? "-translate-y-1 border-brand/30 shadow-lg" : "hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg"}`}
+                  className={`group space-y-3 border border-border bg-secondary/50 transition-transform duration-300 ease-out ${isActive ? "-translate-y-1 border-blue-500/30 shadow-lg" : "hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-lg"}`}
                 >
-                  <h3 className={`text-lg font-semibold text-ink transition-colors duration-300 ease-out ${isActive ? "text-brand" : "group-hover:text-brand"}`}>
+                  <h3 className={`text-lg font-bold text-foreground transition-colors duration-300 ease-out ${isActive ? "text-blue-500" : "group-hover:text-blue-500"}`}>
                     {item.title}
                   </h3>
-                  <p className={`text-justify text-sm text-ink/70 transition-colors duration-300 ease-out ${isActive ? "text-ink" : "group-hover:text-ink"}`}>
+                  <p className={`text-justify text-sm text-muted-foreground transition-colors duration-300 ease-out ${isActive ? "text-foreground" : "group-hover:text-foreground"}`}>
                     {item.description}
                   </p>
                 </Card>
