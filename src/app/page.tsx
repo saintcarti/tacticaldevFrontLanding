@@ -7,7 +7,6 @@ import Projects from "@/components/sections/Projects";
 import Methodology from "@/components/sections/Methodology";
 import TechStack from "@/components/sections/TechStack";
 import CTA from "@/components/sections/CTA";
-import BentoSection from "@/components/sections/BentoGrid";
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
         <Navbar />
         <main>
           <Hero />
-          <BentoSection />
           <About />
           <Services />
           <Projects />

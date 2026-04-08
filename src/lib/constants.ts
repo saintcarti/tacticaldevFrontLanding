@@ -71,7 +71,7 @@ type CaseStudy = {
   imageSrc?: string;
 };
 
-/*export const caseStudies: CaseStudy[] = [
+export const caseStudies: CaseStudy[] = [
   {
     title: "CEECNA",
     industry: "Gestión de Crisis",
@@ -100,7 +100,7 @@ type CaseStudy = {
     href: "#",
     imageSrc: "",
   },
-];*/
+];
 
 export const trustSignals = [
   {
