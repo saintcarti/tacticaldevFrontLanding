@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import CaseStudies from "@/components/sections/CaseStudies";
 import About from "@/components/sections/About";
-import Services from "@/components/sections/Services";
+import ServicesInteractive from "@/components/sections/ServicesInteractive";
 import Projects from "@/components/sections/Projects";
 import Methodology from "@/components/sections/Methodology";
 import TechStack from "@/components/sections/TechStack";
@@ -26,7 +26,7 @@ export default function Home() {
           <Hero />
           <CaseStudies />
           <About />
-          <Services />
+          <ServicesInteractive />
           <Projects />
           <Methodology />
           <TechStack />
