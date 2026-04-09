@@ -1,4 +1,5 @@
 export const navLinks = [
+  { label: "Casos de Estudio", href: "#case-studies" },
   { label: "Sobre Nosotros", href: "#about" },
   { label: "Servicios", href: "#services" },
   { label: "Proyectos", href: "#projects" },
@@ -69,6 +70,7 @@ type CaseStudy = {
   result: string;
   href: string;
   imageSrc?: string;
+  technologies?: { name: string; icon: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -79,8 +81,13 @@ export const caseStudies: CaseStudy[] = [
       "Centro Estratégico de Emergencias y Catástrofes Nacionales. Plataforma de coordinación y respuesta unificada.",
     result: "Centralización de inteligencia para la toma de decisiones estratégicas.",
     href: "https://ceecna.cl",
-    imageSrc: "",
-    
+    imageSrc: "/Casos_de_Estudio/Presentacion_CEECNA.png",
+    technologies: [
+      { name: "Next.js", icon: "SiNextdotjs" },
+      { name: "Tailwind CSS", icon: "SiTailwindcss" },
+      { name: "React", icon: "SiReact" },
+      { name: "HeroUI", icon: "HeroUI" },
+    ],
   },
   {
     title: "GearScanNfc",
@@ -89,16 +96,24 @@ export const caseStudies: CaseStudy[] = [
       "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
     result: "Digitalización de activos y optimización del mantenimiento.",
     href: "",
-    imageSrc: "",
+    imageSrc: "/Imagenes/cellphone.png",
+    technologies: [
+      { name: "Tailwind CSS", icon: "SiTailwindcss" },
+    ],
   },
   {
-    title: "(En Proceso)",
+    title: "ToBlame (En Proceso)",
     industry: "Creator Economy",
     description:
-      "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo y conectar directamente con su audiencia en un entorno privado.",
-    result: "Infraestructura de alta concurrencia para streaming y pagos seguros.",
+      "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo. Desarrollada bajo principios estrictos de Clean Architecture, aislando los dominios de negocio del núcleo para garantizar una escalabilidad absoluta a medida que la plataforma crece.",
+    result: "Desarrollo de dashboards interactivos de alto rendimiento y una infraestructura de alta concurrencia optimizada para streaming y pagos seguros.",
     href: "#",
-    imageSrc: "",
+    imageSrc: "/Soluciones_tecnicas_integrales/Softwareamedida.webp",
+    technologies: [
+      { name: "Angular", icon: "SiAngular" },
+      { name: "Tailwind CSS", icon: "SiTailwindcss" },
+      { name: "PrimeNG", icon: "PrimeNG" },
+    ],
   },
 ];
 
