@@ -65,7 +65,7 @@ async function deploy(project) {
             <span className="h-full w-1/3 bg-accent" />
           </div>
 
-          <p className="max-w-3xl text-center text-ink-3/80 text-base md:text-lg font-medium leading-relaxed mx-auto">
+          <p className="max-w-3xl text-center text-muted-foreground text-base md:text-lg font-medium leading-relaxed mx-auto">
             Más que entregar código, entregamos valor. Desde la modernización de sistemas legados hasta la exploración de nuevas fronteras tecnológicas, nuestro trabajo se define por la precisión técnica y la adaptabilidad. Así es como transformamos desafíos en activos digitales duraderos.
           </p>
         </div>
@@ -74,7 +74,7 @@ async function deploy(project) {
           {caseStudies.map((study, index) => {
             const isActive = activeIndex === index;
             // Card 3 index is 2
-            const isEnProceso = index === 2;
+            const isEnProceso = index === 1; // Updated to match current array length (2 items)
 
             return (
               <BlurFade key={study.title} delay={0.1 * index} inView>
@@ -84,11 +84,11 @@ async function deploy(project) {
                 >
                   <MagicCard 
                     className={cn(
-                      "group relative flex h-full flex-col justify-between overflow-hidden border border-line-soft p-6 transition-all duration-500",
-                      "bg-surface/50 dark:bg-surface-2/50 backdrop-blur-sm",
-                      isActive ? "-translate-y-2 shadow-2xl shadow-brand/10 border-brand/30" : "hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand/10 hover:border-brand/30"
+                      "group relative flex h-full flex-col justify-between overflow-hidden border border-border p-6 transition-all duration-500",
+                      "bg-card/50 backdrop-blur-sm dark:bg-card/30",
+                      isActive ? "-translate-y-2 shadow-2xl shadow-blue-500/10 border-blue-500/30" : "hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-500/30"
                     )}
-                    gradientColor="rgba(59, 130, 246, 0.15)"
+                    gradientColor="rgba(59, 130, 246, 0.1)"
                     gradientSize={300}
                     gradientOpacity={0.6}
                   >
@@ -98,15 +98,15 @@ async function deploy(project) {
                         duration={12} 
                         delay={9} 
                         borderWidth={2}
-                        colorFrom="var(--td-brand)"
-                        colorTo="var(--td-accent)"
+                        colorFrom="#3b82f6"
+                        colorTo="#9333ea"
                       />
                     )}
 
                     <div className="relative z-10 space-y-4">
                       <div className="flex items-center justify-between">
-                        <div className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-medium ring-1 ring-inset ring-brand/20">
-                          <AnimatedShinyText className="text-brand dark:text-brand-2">
+                        <div className="inline-flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium ring-1 ring-inset ring-blue-500/20">
+                          <AnimatedShinyText className="text-blue-600 dark:text-blue-400">
                             {study.industry}
                           </AnimatedShinyText>
                         </div>
@@ -116,8 +116,8 @@ async function deploy(project) {
                             target={study.href.startsWith("http") ? "_blank" : undefined}
                             rel={study.href.startsWith("http") ? "noopener noreferrer" : undefined}
                             className={cn(
-                              "flex h-8 w-8 items-center justify-center rounded-full bg-line-soft text-ink-3 transition-colors hover:bg-brand hover:text-white",
-                              isActive && "bg-brand text-white"
+                              "flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-blue-600 hover:text-white",
+                              isActive && "bg-blue-600 text-white"
                             )}
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4">
@@ -129,25 +129,25 @@ async function deploy(project) {
 
                       <div>
                         <h3 className={cn(
-                          "text-xl font-bold text-ink transition-colors",
-                          (isActive || isEnProceso) && "text-brand-2"
+                          "text-xl font-bold text-foreground transition-colors",
+                          (isActive || isEnProceso) && "text-blue-600 dark:text-blue-400"
                         )}>
                           {study.title}
                         </h3>
-                        <p className="mt-2 text-justify text-sm leading-relaxed text-ink-3">
+                        <p className="mt-2 text-justify text-sm leading-relaxed text-muted-foreground">
                           {study.description}
                         </p>
                       </div>
                     </div>
 
-                    <div className="relative z-10 mt-6 border-t border-line-soft pt-4">
+                    <div className="relative z-10 mt-6 border-t border-border pt-4">
                       <div className="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-green-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-blue-500">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-[10px] font-black uppercase tracking-wider text-ink-3/50">Impacto</span>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-muted-foreground/50">Impacto</span>
                       </div>
-                      <p className="mt-1 text-sm font-bold text-ink/90">
+                      <p className="mt-1 text-sm font-bold text-foreground/90">
                         {study.result}
                       </p>
                       

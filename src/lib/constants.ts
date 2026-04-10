@@ -90,23 +90,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    title: "GearScanNfc",
-    industry: "IoT Industrial",
-    description:
-      "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
-    result: "Digitalización de activos y optimización del mantenimiento.",
-    href: "",
-    technologies: [
-      { name: "Tailwind CSS", icon: "SiTailwindcss" },
-    ],
-  },
-  {
     title: "ToBlame (En Proceso)",
     industry: "Creator Economy",
     description:
       "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo. Desarrollada bajo principios estrictos de Clean Architecture, aislando los dominios de negocio del núcleo para garantizar una escalabilidad absoluta a medida que la plataforma crece.",
     result: "Desarrollo de dashboards interactivos de alto rendimiento y una infraestructura de alta concurrencia optimizada para streaming y pagos seguros.",
     href: "#",
+    imageSrc: "/Casos_de_Estudio/Presentacion_ToBlame.png",
     technologies: [
       { name: "Angular", icon: "SiAngular" },
       { name: "Tailwind CSS", icon: "SiTailwindcss" },
