@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { navLinks } from "@/lib/constants";
 import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
+import { useTheme } from "@/hooks/use-theme";
 
 // Fix: Component defined outside to prevent re-creation on every render
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -20,6 +21,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const theme = useTheme();
   // Removed unused isScrolled state to fix ESLint warning
 
   const handleAnchorClick = (
@@ -47,6 +49,8 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const logoSrc = theme === "dark" ? "/logoTD.webp" : "/LogoTD_White.webp";
+
   return (
     <>
       <header
@@ -55,7 +59,7 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="#top" className="flex items-center">
             <Image
-              src="/logoTD.png"
+              src={logoSrc}
               alt="TacticalDev"
               width={360}
               height={96}

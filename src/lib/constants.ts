@@ -96,7 +96,6 @@ export const caseStudies: CaseStudy[] = [
       "Sistema de monitoreo y diagnóstico de maquinaria mediante tecnología NFC para entornos operativos exigentes.",
     result: "Digitalización de activos y optimización del mantenimiento.",
     href: "",
-    imageSrc: "/Imagenes/cellphone.png",
     technologies: [
       { name: "Tailwind CSS", icon: "SiTailwindcss" },
     ],
@@ -108,7 +107,6 @@ export const caseStudies: CaseStudy[] = [
       "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo. Desarrollada bajo principios estrictos de Clean Architecture, aislando los dominios de negocio del núcleo para garantizar una escalabilidad absoluta a medida que la plataforma crece.",
     result: "Desarrollo de dashboards interactivos de alto rendimiento y una infraestructura de alta concurrencia optimizada para streaming y pagos seguros.",
     href: "#",
-    imageSrc: "/Soluciones_tecnicas_integrales/Softwareamedida.webp",
     technologies: [
       { name: "Angular", icon: "SiAngular" },
       { name: "Tailwind CSS", icon: "SiTailwindcss" },

@@ -1,9 +1,13 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { footerColumns, socialLinks } from "@/lib/constants";
+import { useTheme } from "@/hooks/use-theme";
 
 const socialIcons: Record<string, ReactNode> = {
+  // ... (rest of socialIcons remains the same)
   //LinkedIn: (
   //  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
   //    <path d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5Zm-2 6h4v11h-4v-11Zm7 0h3.8v1.5h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.63 4.79 6.05v5.5h-4v-4.88c0-1.16-.02-2.65-1.62-2.65-1.62 0-1.87 1.26-1.87 2.57v4.96h-4v-11Z" />
@@ -27,13 +31,16 @@ const socialIcons: Record<string, ReactNode> = {
 };
 
 export default function Footer() {
+  const theme = useTheme();
+  const logoSrc = theme === "dark" ? "/logoTD.webp" : "/LogoTD_White.webp";
+
   return (
     <footer className="bg-background text-foreground border-t border-border transition-colors duration-300">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-13 md:grid-cols-[1.7fr_1fr_1fr_1fr]">
         <div className="space-y-2">
           <div className="flex items-center">
             <Image
-              src="/logoTD.png"
+              src={logoSrc}
               alt="TacticalDev"
               width={220}
               height={64}
