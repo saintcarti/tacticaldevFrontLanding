@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { methodologySteps } from "@/lib/constants";
+import Image from "next/image";
 import { 
   Search, 
   Layers, 
@@ -18,6 +19,14 @@ const stepIcons = [
   <Cpu key="03" className="w-6 h-6" />,
   <ShieldCheck key="04" className="w-6 h-6" />,
   <Rocket key="05" className="w-6 h-6" />,
+];
+
+const stepImages = [
+  "/Ingenieria_Procesos/Descubrimiento_Alineacion.webp",
+  "/Ingenieria_Procesos/Arquitectura_Sistemas.webp",
+  "/Ingenieria_Procesos/Ingenieria_ejecucion.webp",
+  "/Ingenieria_Procesos/Aseguramiento_Calidad.webp",
+  "/Ingenieria_Procesos/Despliegue_Adopción.webp",
 ];
 
 export default function Methodology() {
@@ -42,7 +51,7 @@ export default function Methodology() {
         </div>
 
         {/* Bento Grid Asimétrico (Restaurado) */}
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[14rem]">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[19rem]">
           {methodologySteps.map((step, index) => {
             const isHovered = hoveredIndex === index;
             
@@ -72,9 +81,20 @@ export default function Methodology() {
                 {/* Main Bento Box (Glassmorphism con variables actualizadas) */}
                 <div className={`relative h-full w-full overflow-hidden rounded-[2.5rem] border border-line-soft bg-surface/40 backdrop-blur-3xl p-8 flex flex-col justify-between transition-all duration-500 z-10 
                   shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
-                  dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
+                  dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32_rgba(0,0,0,0.4)]
                   ${isHovered ? '-translate-y-2 border-cyan-500/30 shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40px_rgba(6,182,212,0.1)]' : ''}`}>
                   
+                  {/* Background Image for Step */}
+                  <div className="absolute inset-0 z-0">
+                    <Image 
+                      src={stepImages[index]} 
+                      alt={step.title}
+                      fill
+                      className={`object-cover transition-all duration-700 ${isHovered ? 'scale-110 opacity-40' : 'opacity-20 grayscale'}`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/40 to-transparent" />
+                  </div>
+
                   {/* Subtle Grain Texture Overlay */}
                   <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
@@ -88,7 +108,11 @@ export default function Methodology() {
                       <div className={`absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-500 opacity-0 blur-2xl transition-opacity duration-700 ${isHovered ? 'opacity-20' : ''}`} />
                     </div>
                     
-                    <div className={`p-4 rounded-2xl bg-surface-2 border border-line-soft transition-all duration-500 ${isHovered ? 'bg-cyan-500 text-white border-cyan-400 shadow-[0_0_30px_rgba(6,182,212,0.4)] scale-110' : 'text-ink-3'}`}>
+                    <div className={`p-4 rounded-2xl border transition-all duration-500 z-10 ${
+                      isHovered 
+                        ? 'bg-brand text-on-brand border-brand shadow-[0_0_30px_rgba(37,99,235,0.4)] scale-110' 
+                        : 'bg-surface-2 border-line-soft text-ink-3 dark:text-ink-2'
+                    }`}>
                       {stepIcons[index]}
                     </div>
                   </div>
@@ -98,7 +122,7 @@ export default function Methodology() {
                     <h3 className="text-xl font-bold tracking-tight text-ink transition-colors duration-300 group-hover:text-brand">
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-ink-3 line-clamp-3">
+                    <p className="text-sm leading-relaxed text-ink-3">
                       {step.description}
                     </p>
                     

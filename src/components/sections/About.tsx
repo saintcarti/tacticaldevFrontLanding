@@ -2,8 +2,9 @@
 import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { trustSignals } from "@/lib/constants";
+import Image from "next/image";
 import { 
-  Rocket, 
+  Rocket,
   ShieldCheck, 
   Zap, 
   TrendingUp, 
@@ -23,24 +24,41 @@ export default function About() {
       id="about"
       className="relative flex min-h-screen items-center overflow-hidden py-32 text-foreground"
     >
-      <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none" />
+      {/* Background Image with Overlays */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image 
+          src="/Sobre_Nosotros/Developers.png" 
+          alt="Background Team" 
+          fill
+          className="object-cover opacity-[0.35] dark:opacity-[0.45] transition-all duration-1000"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <div className="absolute inset-0 bg-grid opacity-[0.03] dark:opacity-[0.05] pointer-events-none" />
+      </div>
 
       <div className="mx-auto w-full max-w-7xl px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Left Column: Narrative */}
           <div className="flex flex-col space-y-10">
-            <div className="space-y-6">
+            <div className="space-y-2">
               <SectionTitle
                 eyebrow="SOBRE NOSOTROS"
-                title="Talento joven,"
+                title=""
                 align="left"
               />
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] -mt-10">
-                <span className="bg-gradient-to-br from-ink via-ink-2 to-ink-3 bg-clip-text text-transparent drop-shadow-sm">
-                  Ejecución Profesional
-                </span>
-              </h2>
+              <div className="flex flex-col -mt-4">
+                <h2 className="text-3xl font-black md:text-5xl tracking-tighter uppercase text-ink">
+                  Talento joven,
+                </h2>
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[1.1]">
+                  <span className="bg-gradient-to-br from-ink via-ink-2 to-ink-3 bg-clip-text text-transparent drop-shadow-sm">
+                    Ejecución Profesional
+                  </span>
+                </h2>
+              </div>
             </div>
 
             <div className="space-y-6 text-lg font-medium leading-relaxed text-ink-3 max-w-xl">
@@ -64,7 +82,7 @@ export default function About() {
               className="col-span-2 relative overflow-hidden rounded-[2.5rem] border border-line-soft bg-surface/40 backdrop-blur-3xl p-10 group transition-all duration-500
                 shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
                 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
-                hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:hover:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40px_rgba(6,182,212,0.1)]"
+                hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:hover:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40_rgba(6,182,212,0.1)]"
             >
               <div className="absolute -inset-[1px] rounded-[2.5rem] bg-gradient-to-br from-cyan-500/20 via-transparent to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
               <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />

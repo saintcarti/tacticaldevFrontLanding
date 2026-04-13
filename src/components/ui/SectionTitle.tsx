@@ -41,13 +41,6 @@ export default function SectionTitle({
         {title}
       </h2>
       
-      <div
-        className={`flex h-1.5 w-32 overflow-hidden rounded-full ${align === "center" ? "mx-auto" : ""}`}
-      >
-        <span className="h-full w-2/3 bg-brand shadow-[0_0_10px_rgba(37,99,235,0.5)]" />
-        <span className="h-full w-1/3 bg-accent" />
-      </div>
-      
       {description ? (
         <p
           className={`max-w-2xl text-base md:text-lg font-medium leading-relaxed ${descriptionClass} ${descriptionAlignmentClass}`}

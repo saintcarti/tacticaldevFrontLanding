@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navLinks } from "@/lib/constants";
 import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
 import { useTheme } from "@/hooks/use-theme";
@@ -21,8 +21,19 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const theme = useTheme();
-  // Removed unused isScrolled state to fix ESLint warning
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleAnchorClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -136,6 +147,14 @@ export default function Navbar() {
               WhatsApp
             </Link>
           </div>
+        </div>
+
+        {/* Scroll Progress Bar */}
+        <div className="absolute bottom-0 left-0 h-[2px] w-full bg-line-soft/30">
+          <div 
+            className="h-full bg-gradient-to-r from-brand via-accent to-brand transition-all duration-150 ease-out"
+            style={{ width: `${scrollProgress}%` }}
+          />
         </div>
       </header>
       <button

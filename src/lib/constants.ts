@@ -38,28 +38,28 @@ export const servicePillars = [
 export const methodologySteps = [
   {
     step: "01",
-    title: "Descubrimiento",
-    description: "Análisis de requisitos y alineación con stakeholders.",
+    title: "Descubrimiento y Alineación",
+    description: "Análisis profundo de tus procesos actuales, cuellos de botella y objetivos de negocio. Entregamos un diagnóstico claro y una hoja de ruta técnica alineada con tus metas estratégicas.",
   },
   {
     step: "02",
-    title: "Arquitectura",
-    description: "Diseño del sistema con riesgos y guardrails definidos.",
+    title: "Arquitectura de Sistemas",
+    description: "Diseño del blueprint técnico. Seleccionamos la infraestructura cloud y los patrones de diseño exactos para garantizar seguridad y escalabilidad a tu proyecto.",
   },
   {
     step: "03",
-    title: "Ingeniería",
-    description: "Sprints ágiles con hitos semanales y controles de QA.",
+    title: "Ingeniería y Ejecución",
+    description: "Construcción en ciclos ágiles con hitos demostrables semanales. Tendrás visibilidad total del progreso en tiempo real mientras nuestro equipo materializa la solución con código limpio.",
   },
   {
     step: "04",
-    title: "Pruebas QA",
-    description: "Validación de rendimiento, seguridad y UAT.",
+    title: "Aseguramiento de Calidad (QA)",
+    description: "Ingeniería sin defectos. Ejecutamos pruebas de rendimiento, auditorías de seguridad y controles de calidad rigurosos en entornos controlados antes de tocar producción.",
   },
   {
     step: "05",
-    title: "Despliegue",
-    description: "Entrega con monitoreo, escalado y handoff.",
+    title: "Despliegue y Adopción",
+    description: "Lanzamiento sin fricciones (Zero-Downtime). Implementamos monitoreo en tiempo real y entregamos la capacitación necesaria para que tu equipo adopte la nueva herramienta con éxito.",
   },
 ];
 
@@ -159,10 +159,13 @@ export const footerColumns = [
   {
     title: "Servicios",
     links: [
-      "Software empresarial",
-      "Arquitectura en la nube",
-      "Ingeniería de datos",
-      "Migración de legado",
+      "Desarrollo de Software a Medida",
+      "Desarrollo de IA y Machine Learning",
+      "Desarrollo de Aplicaciones Móviles",
+      "Desarrollo Web",
+      "Diseño de Producto",
+      "Aseguramiento de Calidad (QA)",
+      "Servicios de la Nube",
     ],
   },
   {

@@ -108,11 +108,6 @@ export default function ServicesInteractive() {
                       : "bg-transparent border-line-soft hover:bg-surface-2 hover:border-line"
                   }`}
                 >
-                  <span className={`text-[9px] font-bold tracking-[0.2em] mb-1.5 transition-colors duration-300 ${
-                    isActive ? "text-brand" : "text-ink-3 group-hover:text-ink-2"
-                  }`}>
-                    {service.tag}
-                  </span>
                   <span className={`text-sm md:text-base font-bold transition-colors duration-300 leading-tight ${
                     isActive ? "text-ink" : "text-ink-3 group-hover:text-ink"
                   }`}>
@@ -180,11 +175,6 @@ export default function ServicesInteractive() {
                     className="space-y-5"
                   >
                     <div className="space-y-2">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/20 border border-brand/30 backdrop-blur-md mb-1">
-                        <span className="text-[10px] font-black tracking-[0.2em] text-brand-light uppercase">
-                          {currentService.tag}
-                        </span>
-                      </div>
                       <h3 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-[1.1] uppercase drop-shadow-md">
                         {currentService.title}
                       </h3>
