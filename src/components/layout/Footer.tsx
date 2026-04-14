@@ -67,8 +67,16 @@ export default function Footer() {
           <div key={column.title} className="space-y-3 text-sm">
             <p className="font-semibold text-ink">{column.title}</p>
             <ul className="space-y-2 text-ink/70">
-              {column.links.map((link) => (
-                <li key={link}>{link}</li>
+              {column.links.map((link, idx) => (
+                <li key={typeof link === "string" ? link : link.label}>
+                  {typeof link === "string" ? (
+                    link
+                  ) : (
+                    <Link href={link.href} className="hover:text-ink transition-colors">
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
               ))}
             </ul>
           </div>

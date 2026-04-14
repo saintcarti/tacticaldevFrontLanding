@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { navLinks } from "@/lib/constants";
 import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
 import { useTheme } from "@/hooks/use-theme";
+import { usePathname, useRouter } from "next/navigation";
 
 // Fix: Component defined outside to prevent re-creation on every render
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -23,6 +24,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const theme = useTheme();
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +43,12 @@ export default function Navbar() {
     href: string
   ) => {
     if (!href.startsWith("#")) return;
+    
+    if (pathname !== "/") {
+      // If not on home page, navigate to home + anchor
+      return;
+    }
+
     event.preventDefault();
     
     const target = document.getElementById(href.slice(1));
@@ -68,7 +77,7 @@ export default function Navbar() {
         className="fixed inset-x-0 top-0 z-50 border-b border-line-soft bg-nav text-ink backdrop-blur shadow-[var(--td-nav-shadow)]"
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="#top" className="flex items-center">
+          <Link href={pathname === "/" ? "#top" : "/"} className="flex items-center">
             <Image
               src={logoSrc}
               alt="TacticalDev"
@@ -82,8 +91,8 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
-                className="hover:text-ink"
+                href={pathname === "/" ? link.href : `/${link.href}`}
+                className="hover:text-ink transition-colors"
                 onClick={(event) => handleAnchorClick(event, link.href)}
               >
                 {link.label}

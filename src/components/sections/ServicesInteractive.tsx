@@ -15,69 +15,25 @@ import {
   Cpu,
   ArrowRight
 } from "lucide-react";
+import { services } from "@/lib/constants";
+import Link from "next/link";
 
-const services = [
-  {
-    title: "Desarrollo de Software a Medida",
-    tag: "SOFTWARE ENGINEERING",
-    description: "Soluciones robustas y escalables diseñadas específicamente para resolver los retos operativos de su empresa.",
-    icon: Code2,
-    image: "/Soluciones_tecnicas_integrales/Softwareamedida.webp",
-  },
-  {
-    title: "Desarrollo de IA a Medida y Aprendizaje Automático",
-    tag: "INTELIGENCIA ARTIFICIAL",
-    description: "Implementación de modelos inteligentes y redes neuronales adaptadas para automatizar la toma de decisiones críticas.",
-    icon: Brain,
-    image: "/Soluciones_tecnicas_integrales/Machine-Learning.webp",
-  },
-  {
-    title: "Desarrollo de Aplicaciones Móviles",
-    tag: "MOBILE SOLUTIONS",
-    description: "Experiencias móviles de alto rendimiento para iOS y Android con arquitecturas fluidas y centradas en el usuario.",
-    icon: Smartphone,
-    image: "/Soluciones_tecnicas_integrales/Desarrollo Mobile.webp",
-  },
-  {
-    title: "Desarrollo Web",
-    tag: "WEB PLATFORMS",
-    description: "Ecosistemas web modernos y ultrarrápidos construidos con las tecnologías más eficientes del mercado actual.",
-    icon: Globe,
-    image: "/Soluciones_tecnicas_integrales/Desarrollo-Web.webp",
-  },
-  {
-    title: "Diseño de Producto",
-    tag: "PRODUCT DESIGN",
-    description: "Estrategia visual y de experiencia de usuario (UX/UI) orientada a la conversión y al deleite del cliente final.",
-    icon: Palette,
-    image: "/Soluciones_tecnicas_integrales/Diseño-Producto.webp",
-  },
-  {
-    title: "Seguridad de Calidad",
-    tag: "QA & CYBERSECURITY",
-    description: "Ciclos de prueba rigurosos y estándares de seguridad industrial para garantizar la integridad absoluta de sus datos.",
-    icon: ShieldCheck,
-    image: "/Soluciones_tecnicas_integrales/Seguridad-de-Calidad.webp",
-  },
-  {
-    title: "Servicios de Aprendizaje Automático",
-    tag: "MACHINE LEARNING",
-    description: "Entrenamiento de algoritmos predictivos y análisis de datos avanzado para anticipar tendencias de mercado.",
-    icon: Cpu,
-    image: "/Soluciones_tecnicas_integrales/Aprendizaje Automatico.webp",
-  },
-  {
-    title: "Servicios de la Nube",
-    tag: "CLOUD INFRASTRUCTURE",
-    description: "Gestión, migración y optimización de infraestructuras en la nube para una escalabilidad global sin fricciones.",
-    icon: Cloud,
-    image: "/Soluciones_tecnicas_integrales/Servicios-Nube.webp",
-  },
-];
+const iconMap: Record<string, any> = {
+  Code2,
+  Layers,
+  Cloud,
+  Brain,
+  Smartphone,
+  Globe,
+  Palette,
+  ShieldCheck,
+  Cpu
+};
 
 export default function ServicesInteractive() {
   const [activeService, setActiveService] = useState(0);
   const currentService = services[activeService];
+  const IconComponent = iconMap[currentService.icon] || Code2;
 
   return (
     <section id="services" className="w-full bg-transparent py-24">
@@ -151,7 +107,7 @@ export default function ServicesInteractive() {
                       </>
                     ) : (
                       <div className="h-full w-full bg-surface-2 flex items-center justify-center text-brand/20">
-                        {React.createElement(currentService.icon, { size: 240, strokeWidth: 0.5 })}
+                        <IconComponent size={240} strokeWidth={0.5} />
                         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent z-10" />
                       </div>
                     )}
@@ -185,13 +141,15 @@ export default function ServicesInteractive() {
                       {currentService.description}
                     </p>
                     
-                    <motion.button 
-                      whileHover={{ x: 10 }}
-                      className="group/btn inline-flex items-center gap-3 bg-brand px-7 py-3.5 rounded-full text-white font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-brand-2 hover:shadow-[0_0_30px_rgba(var(--brand-rgb),0.5)]"
-                    >
-                      Explorar solución 
-                      <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </motion.button>
+                    <Link href={`/servicios/${currentService.slug}`}>
+                      <motion.button 
+                        whileHover={{ x: 10 }}
+                        className="group/btn inline-flex items-center gap-3 bg-brand px-7 py-3.5 rounded-full text-white font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-brand-2 hover:shadow-[0_0_30px_rgba(var(--brand-rgb),0.5)]"
+                      >
+                        Explorar solución 
+                        <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </motion.button>
+                    </Link>
                   </motion.div>
                 </AnimatePresence>
               </div>
