@@ -273,9 +273,7 @@ export default function InteligenciaArtificialPage() {
 
             <div className="mt-16 flex flex-col items-center gap-4">
                <div className="w-12 h-[1px] bg-border" />
-               <p className="text-muted-foreground/30 text-[10px] font-bold uppercase tracking-[0.4em]">
-                 Tactica Defense • Intelligence Division
-               </p>
+               
             </div>
           </motion.div>
         </div>

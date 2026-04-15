@@ -1,22 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { trustSignals } from "@/lib/constants";
 import Image from "next/image";
-import { 
-  Rocket,
-  ShieldCheck, 
-  Zap, 
-  TrendingUp, 
-  Briefcase 
-} from "lucide-react";
-
-const bentoIcons = [
-  <ShieldCheck key="shield" className="w-5 h-5" />,
-  <Zap key="zap" className="w-5 h-5" />,
-  <TrendingUp key="trend" className="w-5 h-5" />,
-  <Briefcase key="case" className="w-5 h-5" />,
-];
 
 export default function About() {
   return (
@@ -39,94 +23,31 @@ export default function About() {
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          
-          {/* Left Column: Narrative */}
-          <div className="flex flex-col space-y-10">
-            <div className="space-y-2">
-              <SectionTitle
-                eyebrow="SOBRE NOSOTROS"
-                title=""
-                align="left"
-              />
-              <div className="flex flex-col -mt-4">
-                <h2 className="text-3xl font-black md:text-5xl tracking-tighter uppercase text-ink">
-                  Talento joven,
-                </h2>
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[1.1]">
-                  <span className="bg-gradient-to-br from-ink via-ink-2 to-ink-3 bg-clip-text text-transparent drop-shadow-sm">
-                    Ejecución Profesional
-                  </span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="space-y-6 text-lg font-medium leading-relaxed text-ink-3 max-w-xl">
-              <p>
-                TacticalDev es un colectivo de ingenieros apasionados por profesionalizar la innovación. 
-                Combinamos la energía disruptiva del talento joven con una rigurosidad técnica de nivel empresarial.
-              </p>
-              <p>
-                Nuestra misión es transformar conceptos abstractos en realidades digitales sólidas, 
-                aplicando arquitecturas escalables y un enfoque inquebrantable en la calidad del producto final.
-              </p>
-            </div>
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+          <div className="lg:w-1/2">
+            <SectionTitle
+              eyebrow="SOBRE NOSOTROS"
+              title="Talento joven, Ejecución Profesional"
+              align="left"
+            />
           </div>
 
-          {/* Right Column: Asymmetric Bento Grid */}
-          <div className="grid grid-cols-2 gap-4 auto-rows-fr">
-            
-            {/* Top Wide Cell */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="col-span-2 relative overflow-hidden rounded-[2.5rem] border border-line-soft bg-surface/40 backdrop-blur-3xl p-10 group transition-all duration-500
-                shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
-                dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
-                hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:hover:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40_rgba(6,182,212,0.1)]"
-            >
-              <div className="absolute -inset-[1px] rounded-[2.5rem] bg-gradient-to-br from-cyan-500/20 via-transparent to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
-              <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-              
-              <div className="relative z-10 flex items-start gap-8">
-                <div className="p-5 rounded-3xl bg-surface-2 border border-line-soft text-brand shadow-2xl group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500">
-                  <Rocket className="w-10 h-10 filter drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]" />
-                </div>
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-black tracking-tight text-ink uppercase">Pasión por crear</h3>
-                  <p className="text-ink-3 font-medium leading-relaxed">
-                    Ponemos nuestro conocimiento al servicio de tus proyectos, brindando apoyo técnico integral para materializar ideas con calidad profesional y visión estratégica.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+          <div className="lg:w-1/2 space-y-6 text-lg font-medium leading-relaxed text-ink-3 lg:pt-12">
+          <p>
+  <strong>En TacticalDev somos, ante todo, un equipo de personas apasionadas por hacer que la tecnología trabaje a tu favor, no en tu contra.</strong> Nacimos al ver cómo muchas empresas se frustraban con sistemas que prometían mucho y entregaban poco. Por eso, decidimos combinar la energía fresca del talento joven con una regla inquebrantable: hacer las cosas bien, con responsabilidad y desde el primer día.
+</p>
 
-            {/* Bottom 2x2 Grid */}
-            {trustSignals.map((signal, index) => (
-              <motion.div
-                key={signal.title}
-                whileHover={{ y: -5 }}
-                className="relative overflow-hidden rounded-[2.5rem] border border-line-soft bg-surface/40 backdrop-blur-3xl p-8 group transition-all duration-500
-                  shadow-[0_8px_32px_rgba(0,0,0,0.1)] 
-                  dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
-                  hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] dark:hover:shadow-[inset_0_1px_1px_rgba(6,182,212,0.4),0_20px_40px_rgba(6,182,212,0.1)]"
-              >
-                <div className="absolute -inset-[1px] rounded-[2.5rem] bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
-                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+<p>
+  Entendemos que lidiar con el desarrollo de software puede ser estresante. Detrás de cada empresa hay líderes y equipos que simplemente quieren que sus herramientas funcionen, que no fallen en el peor momento y que realmente les ahorren tiempo. Nuestro objetivo principal es quitarte ese peso de encima. 
+</p>
 
-                <div className="relative z-10 flex flex-col h-full justify-between gap-6">
-                  <div className="w-10 h-10 flex items-center justify-center rounded-2xl bg-surface-2 border border-line-soft text-brand group-hover:text-cyan-400 transition-colors duration-300 shadow-lg">
-                    {bentoIcons[index]}
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-lg font-black tracking-tight text-ink uppercase leading-tight">{signal.title}</h4>
-                    <p className="text-sm font-medium leading-relaxed text-ink-3">
-                      {signal.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+<p>
+  <strong>No nos escondemos detrás de palabras técnicas complicadas.</strong> Nos sentamos contigo, escuchamos cómo funciona tu día a día y traducimos tus problemas cotidianos en soluciones digitales claras y fáciles de usar. Construimos exactamente lo que tu negocio necesita para dar el siguiente paso, cuidando cada detalle para que el resultado final sea sólido y confiable.
+</p>
 
+<p>
+  Al final del día, no queremos ser solo un proveedor externo que te entrega un proyecto y desaparece. Queremos ser tus socios de confianza a largo plazo. Nosotros nos encargamos de los dolores de cabeza tecnológicos, para que tú y tu equipo puedan dedicarse a lo que mejor saben hacer: hacer crecer su empresa con total tranquilidad.
+</p>
           </div>
         </div>
       </div>

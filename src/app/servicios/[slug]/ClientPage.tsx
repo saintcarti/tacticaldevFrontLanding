@@ -322,9 +322,6 @@ export default function DynamicServicePage({ params }: { params: { slug: string 
               </Link>
             </motion.div>
 
-            <p className="mt-8 text-foreground/30 text-xs font-bold uppercase tracking-widest">
-              Consultoría técnica sin compromiso • 30 Minutos de Valor
-            </p>
           </motion.div>
         </div>
       </section>

@@ -78,8 +78,9 @@ export const caseStudies: CaseStudy[] = [
     title: "CEECNA",
     industry: "Gestión de Crisis",
     description:
-      "Centro Estratégico de Emergencias y Catástrofes Nacionales. Plataforma de coordinación y respuesta unificada.",
-    result: "Centralización de inteligencia para la toma de decisiones estratégicas.",
+      "Plataforma de misión crítica que centraliza la respuesta ante emergencias y catástrofes. Diseñamos una arquitectura monolítica de alta cohesión y cero latencia para unificar datos, documentación y protocolos en tiempo real, garantizando fiabilidad absoluta cuando cada segundo cuenta.",
+    result:
+      "Entregamos un centro de comando digital. El sistema cuenta con un Dashboard integral que actúa como única fuente de verdad para gestionar recursos y emitir alertas tempranas, respaldando cada decisión táctica en terreno con datos precisos.",
     href: "https://ceecna.cl",
     imageSrc: "/Casos_de_Estudio/Presentacion_CEECNA.png",
     technologies: [
@@ -87,14 +88,17 @@ export const caseStudies: CaseStudy[] = [
       { name: "Tailwind CSS", icon: "SiTailwindcss" },
       { name: "React", icon: "SiReact" },
       { name: "HeroUI", icon: "HeroUI" },
+      { name: "C#", icon: "TbBrandCSharp" },
+      { name: "SQL Server", icon: "DiMsqlServer" },
     ],
   },
   {
     title: "ToBlame (En Proceso)",
     industry: "Creator Economy",
     description:
-      "Plataforma de suscripción premium que permite a los creadores monetizar contenido exclusivo. Desarrollada bajo principios estrictos de Clean Architecture, aislando los dominios de negocio del núcleo para garantizar una escalabilidad absoluta a medida que la plataforma crece.",
-    result: "Desarrollo de dashboards interactivos de alto rendimiento y una infraestructura de alta concurrencia optimizada para streaming y pagos seguros.",
+      "Plataforma transaccional de suscripciones premium para creadores de contenido. Desarrollada bajo principios de Clean Architecture y diseño Feature-Driven para soportar alta concurrencia, procesar pagos recurrentes de forma segura y entregar contenido sin latencia.",
+    result:
+      "Una infraestructura elástica de alto rendimiento que incluye dashboards financieros interactivos de grado empresarial. Permite a los creadores analizar métricas y gestionar flujos de ingresos en tiempo real sobre una base inquebrantable, lista para escalar masivamente.",
     href: "#",
     imageSrc: "/Casos_de_Estudio/Presentacion_ToBlame.png",
     technologies: [
@@ -105,24 +109,7 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const trustSignals = [
-  {
-    title: "Seguridad primero",
-    description: "Procesos con cumplimiento SOC2 y arquitecturas reforzadas.",
-  },
-  {
-    title: "Ejecución precisa",
-    description: "Ingeniería sin defectos con responsabilidad clara.",
-  },
-  {
-    title: "Escalabilidad",
-    description: "Listo para crecer y soportar picos de demanda.",
-  },
-  {
-    title: "Enfoque empresarial",
-    description: "Alineado con objetivos de ROI y reportes ejecutivos.",
-  },
-];
+
 
 export const whyUs = [
   {

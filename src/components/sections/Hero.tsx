@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import { AuroraText } from "@/registry/magicui/aurora-text";
 import Image from "next/image";
 import { useTheme } from "@/hooks/use-theme";
+import { usePathname } from "next/navigation";
 
 // Simple SVG Icons for Navigation
 const ChevronLeftIcon = ({ className }: { className?: string }) => (
@@ -34,8 +35,10 @@ const slides = [
     title: "Bienvenido a",
     highlight: "Estrategias de software adaptadas a tus objetivos",
     description: "",
+    image: "/Soluciones_tecnicas_integrales/Desarrollo-Web.webp",
+    alt: "Desarrollo Web",
     buttonText: "Contáctanos",
-    buttonHref: "https://wa.me/+56991338717",
+    buttonHref: "#contact",
     buttonVariant: "primary" as const,
   },
   {
@@ -43,8 +46,10 @@ const slides = [
     title: "Somos expertos en el",
     highlight: "Marketing digital y diseño web",
     description: "",
+    image: "/Soluciones_tecnicas_integrales/Diseño-Producto.webp",
+    alt: "Diseño de Producto",
     buttonText: "Servicios",
-    buttonHref: "#servicios",
+    buttonHref: "#services",
     buttonVariant: "primary" as const,
   },
   {
@@ -52,6 +57,8 @@ const slides = [
     title: "Grupo moderno que aporta",
     highlight: "Creatividad y Soluciones",
     description: "",
+    image: "/Soluciones_tecnicas_integrales/Softwareamedida.webp",
+    alt: "Software a Medida",
     buttonText: "Sobre Nosotros",
     buttonHref: "#about",
     buttonVariant: "primary" as const,
@@ -62,6 +69,34 @@ export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  const handleAnchorClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (!href.startsWith("#")) return;
+    
+    if (pathname !== "/") return;
+
+    event.preventDefault();
+    
+    const target = document.getElementById(href.slice(1));
+
+    if (!target) return;
+
+    const header = document.querySelector("header");
+    let headerOffset = 0;
+    if (header) {
+      const navBar = header.firstElementChild;
+      headerOffset = navBar ? navBar.getBoundingClientRect().height : header.getBoundingClientRect().height;
+    }
+    
+    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset + 50;
+
+    window.scrollTo({ top, behavior: "smooth" });
+    window.history.replaceState(null, "", href);
+  };
 
   // Parallax scroll effect for the content
   const { scrollYProgress } = useScroll({
@@ -141,7 +176,7 @@ export default function Hero() {
               className="absolute inset-0 grid w-full grid-cols-1 md:grid-cols-2"
             >
               {/* Left Column: Text Content */}
-              <div className="flex flex-col items-center justify-center px-6 text-center md:items-start md:px-16 md:text-left lg:px-24">
+              <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center md:items-start md:px-16 md:text-left lg:px-24">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -175,6 +210,7 @@ export default function Hero() {
                 >
                   <Button 
                     href={slides[currentSlide].buttonHref}
+                    onClick={(e) => handleAnchorClick(e, slides[currentSlide].buttonHref)}
                     className="group relative overflow-hidden bg-gradient-to-r from-cyan-500 to-purple-600 px-10 py-4 text-white transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_35px_rgba(139,92,246,0.4)] border-none"
                   >
                     <span className="relative z-10 font-bold text-lg">{slides[currentSlide].buttonText}</span>
@@ -183,15 +219,18 @@ export default function Hero() {
                 </motion.div>
               </div>
 
-              {/* Right Column: Image Content (Filling the Entire Right Half Completely) */}
-              <div className="relative hidden h-full w-full overflow-hidden md:block">
+              {/* Right Column: Image Content (Background on Mobile, Side-by-Side on Desktop) */}
+              <div className="absolute inset-0 z-0 h-full w-full overflow-hidden md:relative md:inset-auto md:z-auto md:block">
                 <Image
-                  src="/Ingenieria_Procesos/Arquitectura_Sistemas.webp"
-                  alt="Arquitectura Técnica"
+                  src={slides[currentSlide].image}
+                  alt={slides[currentSlide].alt}
                   fill
                   className="object-cover object-center"
                   priority
                 />
+                
+                {/* Mobile Overlay for Readability */}
+                <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] md:hidden" />
                 
                 {/* Brand Accent Glow */}
                 <div className="absolute -right-[10%] top-1/2 h-[60%] w-[60%] -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />

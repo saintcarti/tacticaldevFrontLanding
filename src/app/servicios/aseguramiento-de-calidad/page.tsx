@@ -256,9 +256,7 @@ export default function AseguramientoDeCalidadPage() {
 
             <div className="mt-24 flex flex-col items-center gap-4">
                <div className="w-12 h-[1px] bg-border" />
-               <p className="text-muted-foreground/20 text-[10px] font-bold uppercase tracking-[0.4em]">
-                 Tactica Defense • Security & Quality Assurance
-               </p>
+               
             </div>
           </motion.div>
         </div>

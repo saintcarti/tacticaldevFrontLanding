@@ -7,6 +7,8 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SiNextdotjs, SiReact, SiAngular, SiTailwindcss } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
+import { DiMsqlServer } from "react-icons/di";
 
 const HeroUIIcon = () => (
   <svg viewBox="0 0 128 128" fill="currentColor" className="w-6 h-6">
@@ -32,6 +34,10 @@ const getIcon = (iconName: string) => {
       return <SiAngular className="w-6 h-6 text-[#DD0031]" />;
     case "SiTailwindcss":
       return <SiTailwindcss className="w-6 h-6 text-[#38BDF8]" />;
+    case "TbBrandCSharp":
+      return <TbBrandCSharp className="w-6 h-6 text-[#239120]" />;
+    case "DiMsqlServer":
+      return <DiMsqlServer className="w-6 h-6 text-[#CC2927]" />;
     case "HeroUI":
       return <HeroUIIcon />;
     case "PrimeNG":
@@ -96,8 +102,8 @@ export default function CaseStudies() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-start"
             >
-              {/* Columna Izquierda: Imagen (Llenando bordes superior e inferior) */}
-              <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border group shadow-xl dark:shadow-[0_0_50px_-12px_rgba(59,130,246,0.2)] bg-muted dark:bg-card flex items-center justify-center">
+              {/* Columna Izquierda: Imagen (Background on Mobile, Side-by-Side on Desktop) */}
+              <div className="absolute inset-0 z-0 lg:relative lg:inset-auto lg:z-auto lg:aspect-video rounded-[2rem] overflow-hidden border border-border group shadow-xl dark:shadow-[0_0_50px_-12px_rgba(59,130,246,0.2)] bg-muted dark:bg-card flex items-center justify-center lg:block">
                 <Image
                   src={currentStudy.imageSrc || "/Imagenes/imagen2.png"}
                   alt={currentStudy.title}
@@ -105,25 +111,15 @@ export default function CaseStudies() {
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.05]"
                   priority
                 />
-                {/* Overlay sutil para mejorar legibilidad en los bordes */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                {/* Mobile Overlay for Readability */}
+                <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px] lg:hidden" />
                 
-                {/* Badge de industria sobre la imagen en móvil */}
-                <div className="absolute top-8 left-8 lg:hidden">
-                  <span className="px-5 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-xl text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase">
-                    {currentStudy.industry}
-                  </span>
-                </div>
+                {/* Desktop Overlay sutil para mejorar legibilidad en los bordes */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none hidden lg:block" />
               </div>
 
               {/* Columna Derecha: Detalles */}
-              <div className="flex flex-col space-y-10 py-2">
-                <div className="hidden lg:block">
-                  <span className="px-4 py-1.5 rounded-full bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/20 dark:border-blue-500/30 backdrop-blur-md text-blue-600 dark:text-blue-400 text-sm font-bold tracking-wider uppercase">
-                    {currentStudy.industry}
-                  </span>
-                </div>
-
+              <div className="relative z-10 flex flex-col space-y-10 py-2 lg:px-0 px-6">
                 <div>
                   <h3 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
                     {currentStudy.title}
