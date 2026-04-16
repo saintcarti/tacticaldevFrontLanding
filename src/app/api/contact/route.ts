@@ -27,8 +27,14 @@ export async function POST(request: Request) {
     const contactTo = process.env.CONTACT_TO;
 
     if (!gmailUser || !gmailPass || !contactTo) {
+      const missing = [
+        !gmailUser && "GMAIL_USER",
+        !gmailPass && "GMAIL_APP_PASSWORD",
+        !contactTo && "CONTACT_TO",
+      ].filter(Boolean).join(", ");
+      console.error("[contact] Missing env vars:", missing);
       return NextResponse.json(
-        { ok: false, error: "Faltan variables de entorno." },
+        { ok: false, error: `Faltan variables: ${missing}` },
         { status: 500 }
       );
     }
