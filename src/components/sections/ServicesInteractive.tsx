@@ -116,7 +116,7 @@ export default function ServicesInteractive() {
 
               {/* Decorative Accents */}
               <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-80 h-80 bg-brand/30 blur-[100px] rounded-full pointer-events-none z-10" />
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] pointer-events-none mix-blend-overlay z-10" />
+              <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.05] pointer-events-none mix-blend-overlay z-10" />
 
               {/* Content Layer */}
               <div className="relative z-20 p-8 lg:p-14 w-full lg:max-w-2xl">

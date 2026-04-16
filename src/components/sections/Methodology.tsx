@@ -96,7 +96,7 @@ export default function Methodology() {
                   </div>
 
                   {/* Subtle Grain Texture Overlay */}
-                  <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                  <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('/noise.svg')]" />
 
                   {/* Header: Backlit Number & Icon */}
                   <div className="flex items-start justify-between relative">
