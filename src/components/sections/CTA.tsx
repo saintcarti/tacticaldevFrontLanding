@@ -4,7 +4,78 @@ import { useState, type FormEvent } from "react";
 import { Phone } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "152b53bc-afc1-44e2-b378-087e9b83ea8e";
+
+function buildEmailHtml(nombre: string, empresa: string, email: string, description: string) {
+  return `<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#0b0d12;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0b0d12;padding:40px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#111318;border-radius:16px;overflow:hidden;border:1px solid #1e2130;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#1a2fff 0%,#0b0d12 100%);padding:36px 40px;">
+            <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:3px;color:#6b7dff;text-transform:uppercase;">TacticalDev Engineering Group</p>
+            <h1 style="margin:8px 0 0;font-size:26px;font-weight:800;color:#ffffff;line-height:1.2;">Nuevo mensaje<br>de contacto</h1>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:36px 40px;">
+
+            <!-- Datos del contacto -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="padding-bottom:16px;border-bottom:1px solid #1e2130;">
+                  <p style="margin:0 0 4px;font-size:10px;font-weight:700;letter-spacing:2px;color:#4a5568;text-transform:uppercase;">Nombre</p>
+                  <p style="margin:0;font-size:17px;font-weight:600;color:#e2e8f0;">${nombre}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px 0;border-bottom:1px solid #1e2130;">
+                  <p style="margin:0 0 4px;font-size:10px;font-weight:700;letter-spacing:2px;color:#4a5568;text-transform:uppercase;">Empresa</p>
+                  <p style="margin:0;font-size:17px;font-weight:600;color:#e2e8f0;">${empresa}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px 0 0;">
+                  <p style="margin:0 0 4px;font-size:10px;font-weight:700;letter-spacing:2px;color:#4a5568;text-transform:uppercase;">Correo electrónico</p>
+                  <a href="mailto:${email}" style="margin:0;font-size:17px;font-weight:600;color:#4a6fff;text-decoration:none;">${email}</a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Mensaje -->
+            <p style="margin:0 0 10px;font-size:10px;font-weight:700;letter-spacing:2px;color:#4a5568;text-transform:uppercase;">Mensaje</p>
+            <div style="background:#0b0d12;border-left:3px solid #2f6bff;border-radius:8px;padding:20px 24px;">
+              <p style="margin:0;font-size:15px;color:#a0aec0;line-height:1.7;white-space:pre-wrap;">${description}</p>
+            </div>
+
+            <!-- CTA -->
+            <div style="margin-top:32px;text-align:center;">
+              <a href="mailto:${email}" style="display:inline-block;background:#2f6bff;color:#ffffff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;letter-spacing:0.5px;">Responder a ${nombre}</a>
+            </div>
+
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#0b0d12;padding:20px 40px;border-top:1px solid #1e2130;text-align:center;">
+            <p style="margin:0;font-size:11px;color:#4a5568;">© 2026 TacticalDev Engineering Group · Santiago, Chile</p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
@@ -24,13 +95,17 @@ export default function CTA() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    const nombre = String(formData.get("nombre") ?? "");
+    const empresa = String(formData.get("empresa") ?? "") || "No especificada";
+    const email = String(formData.get("email") ?? "");
+    const description = String(formData.get("description") ?? "");
+
     const payload = {
       access_key: WEB3FORMS_KEY,
-      subject: `Nuevo contacto desde TacticalDev — ${formData.get("nombre")}`,
-      nombre: formData.get("nombre"),
-      empresa: formData.get("empresa") || "No especificada",
-      email: formData.get("email"),
-      description: formData.get("description"),
+      subject: `Nuevo contacto desde TacticalDev — ${nombre}`,
+      from_name: nombre,
+      replyto: email,
+      html: buildEmailHtml(nombre, empresa, email, description),
     };
 
     try {
