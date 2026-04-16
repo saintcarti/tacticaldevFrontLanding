@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
@@ -22,48 +22,45 @@ export async function POST(request: Request) {
       );
     }
 
-    const from = process.env.CONTACT_FROM;
-    const to = process.env.CONTACT_TO;
+    const gmailUser = process.env.GMAIL_USER;
+    const gmailPass = process.env.GMAIL_APP_PASSWORD;
+    const contactTo = process.env.CONTACT_TO;
 
-    if (!process.env.RESEND_API_KEY || !from || !to) {
+    if (!gmailUser || !gmailPass || !contactTo) {
       return NextResponse.json(
         { ok: false, error: "Faltan variables de entorno." },
         { status: 500 }
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const subject = `Nuevo contacto desde TacticalDev — ${sanitizedNombre}`;
-    const text = [
-      `Nombre: ${sanitizedNombre}`,
-      `Empresa: ${sanitizedEmpresa || "No especificada"}`,
-      `Correo: ${sanitizedEmail}`,
-      "",
-      "Mensaje:",
-      sanitizedDescription,
-    ].join("\n");
-
-    const { error } = await resend.emails.send({
-      from,
-      to: [to],
-      subject,
-      replyTo: sanitizedEmail,
-      text,
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: gmailUser,
+        pass: gmailPass,
+      },
     });
 
-    if (error) {
-      return NextResponse.json(
-        { ok: false, error: "No se pudo enviar el correo." },
-        { status: 500 }
-      );
-    }
+    await transporter.sendMail({
+      from: `"TacticalDev" <${gmailUser}>`,
+      to: contactTo,
+      replyTo: sanitizedEmail,
+      subject: `Nuevo contacto desde TacticalDev — ${sanitizedNombre}`,
+      text: [
+        `Nombre: ${sanitizedNombre}`,
+        `Empresa: ${sanitizedEmpresa || "No especificada"}`,
+        `Correo: ${sanitizedEmail}`,
+        "",
+        "Mensaje:",
+        sanitizedDescription,
+      ].join("\n"),
+    });
 
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
-      { ok: false, error: "Solicitud inválida." },
-      { status: 400 }
+      { ok: false, error: "No se pudo enviar el mensaje." },
+      { status: 500 }
     );
   }
 }
