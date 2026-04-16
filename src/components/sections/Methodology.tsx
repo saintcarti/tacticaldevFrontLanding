@@ -61,7 +61,7 @@ export default function Methodology() {
               "md:col-span-3 lg:col-span-4 lg:row-span-1", // 02 square
               "md:col-span-3 lg:col-span-4 lg:row-span-2", // 03 tall
               "md:col-span-3 lg:col-span-4 lg:row-span-1", // 04 square
-              "md:col-span-6 lg:col-span-8 lg:row-span-1", // 05 wide
+              "md:col-span-6 lg:col-span-12 lg:row-span-1", // 05 wide
             ][index];
 
             return (

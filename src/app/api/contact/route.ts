@@ -3,17 +3,21 @@ import { Resend } from "resend";
 
 export async function POST(request: Request) {
   try {
-    const { email, description } = (await request.json()) as {
+    const { nombre, empresa, email, description } = (await request.json()) as {
+      nombre?: string;
+      empresa?: string;
       email?: string;
       description?: string;
     };
 
+    const sanitizedNombre = nombre?.trim();
+    const sanitizedEmpresa = empresa?.trim();
     const sanitizedEmail = email?.trim();
     const sanitizedDescription = description?.trim();
 
-    if (!sanitizedEmail || !sanitizedDescription) {
+    if (!sanitizedNombre || !sanitizedEmail || !sanitizedDescription) {
       return NextResponse.json(
-        { ok: false, error: "Email y descripcion son requeridos." },
+        { ok: false, error: "Nombre, email y descripción son requeridos." },
         { status: 400 }
       );
     }
@@ -30,8 +34,15 @@ export async function POST(request: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const subject = "Nuevo contacto desde TacticalDev";
-    const text = `Correo: ${sanitizedEmail}\n\nMensaje:\n${sanitizedDescription}`;
+    const subject = `Nuevo contacto desde TacticalDev — ${sanitizedNombre}`;
+    const text = [
+      `Nombre: ${sanitizedNombre}`,
+      `Empresa: ${sanitizedEmpresa || "No especificada"}`,
+      `Correo: ${sanitizedEmail}`,
+      "",
+      "Mensaje:",
+      sanitizedDescription,
+    ].join("\n");
 
     const { error } = await resend.emails.send({
       from,
@@ -49,9 +60,9 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: "Solicitud invalida." },
+      { ok: false, error: "Solicitud inválida." },
       { status: 400 }
     );
   }

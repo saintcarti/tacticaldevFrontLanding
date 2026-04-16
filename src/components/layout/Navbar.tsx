@@ -102,7 +102,7 @@ export default function Navbar() {
           <div className="hidden items-center gap-4 md:flex">
             <AnimatedThemeToggler className="group relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-line/60 bg-ink/10 text-ink transition-colors hover:bg-ink/20" />
             <Link
-              href="https://wa.me/+56991338717"
+              href="https://wa.me/+56984656126"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-on-brand transition hover:bg-[#1fb85a]"
             >
               <span className="flex h-6 w-6 items-center justify-center">
@@ -147,7 +147,7 @@ export default function Navbar() {
               <AnimatedThemeToggler className="group relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-line/60 bg-ink/10 text-ink transition-colors hover:bg-ink/20" />
             </div>
             <Link
-              href="https://wa.me/+56991338717"
+              href="https://wa.me/+56984656126"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-on-brand transition hover:bg-[#1fb85a]"
             >
               <span className="flex h-4 w-4 items-center justify-center">
@@ -176,7 +176,7 @@ export default function Navbar() {
         onClick={() => setIsOpen(false)}
       />
       <Link
-        href="https://wa.me/+56991338717"
+        href="https://wa.me/+56984656126"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-transform hover:scale-110 active:scale-95 md:hidden"

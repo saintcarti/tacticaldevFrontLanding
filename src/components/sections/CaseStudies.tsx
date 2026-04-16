@@ -100,27 +100,25 @@ export default function CaseStudies() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-start"
+              className="flex flex-col gap-10"
             >
-              {/* Columna Izquierda: Imagen (Background on Mobile, Side-by-Side on Desktop) */}
-              <div className="absolute inset-0 z-0 lg:relative lg:inset-auto lg:z-auto lg:aspect-video rounded-[2rem] overflow-hidden border border-border group shadow-xl dark:shadow-[0_0_50px_-12px_rgba(59,130,246,0.2)] bg-muted dark:bg-card flex items-center justify-center lg:block">
-                <Image
-                  src={currentStudy.imageSrc || "/Imagenes/imagen2.png"}
-                  alt={currentStudy.title}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.05]"
-                  priority
-                />
-                {/* Mobile Overlay for Readability */}
-                <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px] lg:hidden" />
-                
-                {/* Desktop Overlay sutil para mejorar legibilidad en los bordes */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none hidden lg:block" />
-              </div>
+              {/* Fila superior: imagen + título/descripción */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-start">
+                {/* Columna Izquierda: Imagen */}
+                <div className="absolute inset-0 z-0 lg:relative lg:inset-auto lg:z-auto lg:aspect-video rounded-[2rem] overflow-hidden border border-border group shadow-xl dark:shadow-[0_0_50px_-12px_rgba(59,130,246,0.2)] bg-muted dark:bg-card flex items-center justify-center lg:block">
+                  <Image
+                    src={currentStudy.imageSrc || "/Imagenes/imagen2.png"}
+                    alt={currentStudy.title}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-[1.05]"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px] lg:hidden" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none hidden lg:block" />
+                </div>
 
-              {/* Columna Derecha: Detalles */}
-              <div className="relative z-10 flex flex-col space-y-10 py-2 lg:px-0 px-6">
-                <div>
+                {/* Columna Derecha: título + descripción */}
+                <div className="relative z-10 flex flex-col justify-center py-2 lg:px-0 px-6">
                   <h3 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
                     {currentStudy.title}
                   </h3>
@@ -128,35 +126,40 @@ export default function CaseStudies() {
                     {currentStudy.description}
                   </p>
                 </div>
+              </div>
 
-                <div className="space-y-6 pt-6 border-t border-black/5 dark:border-white/10">
-                  <div>
-                    <h4 className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] mb-3">Resultado Clave</h4>
-                    <p className="text-2xl text-foreground font-medium">
-                      {currentStudy.result}
-                    </p>
-                  </div>
-
-                  {currentStudy.technologies && (
-                    <div>
-                      <h4 className="text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-4">Stack Tecnológico</h4>
-                      <div className="flex flex-wrap gap-6 items-center">
-                        {currentStudy.technologies.map((tech, idx) => (
-                          <div 
-                            key={idx} 
-                            className="flex items-center gap-2 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-                            title={tech.name}
-                          >
-                            <span className="p-2 rounded-lg bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10">
-                              {getIcon(tech.icon)}
-                            </span>
-                            <span className="text-sm font-medium">{tech.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+              {/* Fila inferior: Resultado Clave + Stack — full width */}
+              <div className="relative z-10 border-t border-black/5 dark:border-white/10 pt-8 space-y-6 px-6 lg:px-0">
+                <div>
+                  <h4 className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] mb-4">
+                    Resultado Clave
+                  </h4>
+                  <p className="text-2xl lg:text-3xl text-foreground font-medium leading-snug max-w-5xl">
+                    {currentStudy.result}
+                  </p>
                 </div>
+
+                {currentStudy.technologies && (
+                  <div>
+                    <h4 className="text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.2em] mb-4">
+                      Stack Tecnológico
+                    </h4>
+                    <div className="flex flex-wrap gap-6 items-center">
+                      {currentStudy.technologies.map((tech, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
+                          title={tech.name}
+                        >
+                          <span className="p-2 rounded-lg bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10">
+                            {getIcon(tech.icon)}
+                          </span>
+                          <span className="text-sm font-medium">{tech.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>

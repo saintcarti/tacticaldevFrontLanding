@@ -156,8 +156,11 @@ export const footerColumns = [
     ],
   },
   {
-    title: "Email",
-    links: ["info@tacticaldev.cl"],
+    title: "Contacto",
+    links: [
+      { label: "info@tacticaldev.cl", href: "mailto:info@tacticaldev.cl" },
+      { label: "+56 9 8465 6126", href: "tel:+56984656126" },
+    ],
   },
   {
     title: "Dirección",

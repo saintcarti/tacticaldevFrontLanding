@@ -34,7 +34,7 @@ const slides = [
     id: 1,
     title: "Bienvenido a",
     highlight: "Estrategias de software adaptadas a tus objetivos",
-    description: "",
+    description: "Diseñamos soluciones empresariales escalables, seguras y preparadas para el crecimiento real de tu negocio.",
     image: "/Soluciones_tecnicas_integrales/Desarrollo-Web.webp",
     alt: "Desarrollo Web",
     buttonText: "Contáctanos",
@@ -45,10 +45,10 @@ const slides = [
     id: 2,
     title: "Somos expertos en el",
     highlight: "Marketing digital y diseño web",
-    description: "",
+    description: "Combinamos diseño visual de impacto con estrategias digitales que conectan tu marca con la audiencia correcta.",
     image: "/Soluciones_tecnicas_integrales/Diseño-Producto.webp",
     alt: "Diseño de Producto",
-    buttonText: "Servicios",
+    buttonText: "Ver Servicios",
     buttonHref: "#services",
     buttonVariant: "primary" as const,
   },
@@ -56,7 +56,7 @@ const slides = [
     id: 3,
     title: "Grupo moderno que aporta",
     highlight: "Creatividad y Soluciones",
-    description: "",
+    description: "Software construido a la medida de tus procesos, eliminando fricciones y acelerando resultados desde el primer sprint.",
     image: "/Soluciones_tecnicas_integrales/Softwareamedida.webp",
     alt: "Software a Medida",
     buttonText: "Sobre Nosotros",
@@ -173,7 +173,7 @@ export default function Hero() {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
               }}
-              className="absolute inset-0 grid w-full grid-cols-1 md:grid-cols-2"
+              className="absolute inset-0 grid w-full grid-cols-1 md:grid-cols-[5fr_7fr]"
             >
               {/* Left Column: Text Content */}
               <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center md:items-start md:px-16 md:text-left lg:px-24">
@@ -228,10 +228,28 @@ export default function Hero() {
                   className="object-cover object-center"
                   priority
                 />
-                
+
                 {/* Mobile Overlay for Readability */}
                 <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] md:hidden" />
-                
+
+                {/* Bottom gradient + caption */}
+                <div className="absolute inset-x-0 bottom-0 hidden md:flex flex-col justify-end bg-gradient-to-t from-background/80 via-background/20 to-transparent pb-12 px-8 pt-32">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
+                    className="space-y-1"
+                  >
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400/80">
+                      {slides[currentSlide].alt}
+                    </p>
+                    <p className="text-sm text-white/60 max-w-xs leading-relaxed">
+                      {slides[currentSlide].description}
+                    </p>
+                  </motion.div>
+                </div>
+
                 {/* Brand Accent Glow */}
                 <div className="absolute -right-[10%] top-1/2 h-[60%] w-[60%] -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
               </div>

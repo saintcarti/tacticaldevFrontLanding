@@ -60,17 +60,12 @@ async function deploy(project) {
             </h2>
           </BlurFade>
           
-          <div className="flex h-1.5 w-32 overflow-hidden rounded-full mx-auto">
-            <span className="h-full w-2/3 bg-brand shadow-[0_0_10px_rgba(37,99,235,0.5)]" />
-            <span className="h-full w-1/3 bg-accent" />
-          </div>
-
           <p className="max-w-3xl text-center text-muted-foreground text-base md:text-lg font-medium leading-relaxed mx-auto">
             Más que entregar código, entregamos valor. Desde la modernización de sistemas legados hasta la exploración de nuevas fronteras tecnológicas, nuestro trabajo se define por la precisión técnica y la adaptabilidad. Así es como transformamos desafíos en activos digitales duraderos.
           </p>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2">
           {caseStudies.map((study, index) => {
             const isActive = activeIndex === index;
             // Card 3 index is 2
